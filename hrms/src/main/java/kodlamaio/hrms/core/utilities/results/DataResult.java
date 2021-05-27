@@ -5,11 +5,11 @@ public class DataResult<T> extends Result {
 
 	private T data;
 	public DataResult(T data,boolean success, String message) {
-		super(success, message);//base sınıfın constructor larını çalıştırır.
+		super(success, message);
 		this.data=data;
 	}
 	public DataResult(T data,boolean success) {
-		super(success);//base sınıfın constructor larını çalıştırır.
+		super(success);
 		this.data=data;
 	}
 	public T getData() {
