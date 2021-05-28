@@ -7,5 +7,7 @@ import kodlamaio.hrms.entities.concretes.User;
 public interface UserService {
 	
 	Result add(User user);
+	
+	void getByEmail(String email);
 
 }

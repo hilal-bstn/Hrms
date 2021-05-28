@@ -23,6 +23,11 @@ public class UserManager implements UserService {
 		this.userDao.save(user);
 		return new SuccessResult("kullanıcı eklendi");
 	}
+	@Override
+	public void getByEmail(String email) {
+		
+		//return user olmalı
+	}
 
 	
 

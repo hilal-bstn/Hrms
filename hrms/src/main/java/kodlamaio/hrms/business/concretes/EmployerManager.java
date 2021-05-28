@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.EmployerService;
+import kodlamaio.hrms.business.abstracts.UserService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
@@ -17,10 +18,12 @@ import kodlamaio.hrms.entities.concretes.Employer;
 public class EmployerManager implements EmployerService  {
 
 	private EmployerDao employerDao;
+	private UserService userService;
 	@Autowired
-	public EmployerManager(EmployerDao employerDao) {
+	public EmployerManager(EmployerDao employerDao,UserService userService) {
 		super();
 		this.employerDao = employerDao;
+		this.userService=userService;
 	}
 
 	@Override
@@ -33,5 +36,6 @@ public class EmployerManager implements EmployerService  {
 		this.employerDao.save(employer);
 		return new SuccessResult("işveren eklendi");
 	}
+
 
 }

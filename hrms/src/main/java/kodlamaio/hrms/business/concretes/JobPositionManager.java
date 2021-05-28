@@ -30,6 +30,8 @@ public class JobPositionManager implements JobPositionService {
 
 	@Override
 	public Result add(JobPosition jobPosition) {
+	    
+		//aynı pozisyondan varsa ekleme yapılamaz private method ekle
 		this.jobPositionDao.save(jobPosition);
 		return new SuccessResult("Pozisyon eklendi.");
 	}
