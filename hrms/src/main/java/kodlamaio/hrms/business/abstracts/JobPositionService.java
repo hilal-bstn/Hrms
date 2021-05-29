@@ -12,4 +12,6 @@ public interface JobPositionService {
 	
 	Result add(JobPosition jobPosition);
 	
+	DataResult<JobPosition> getByTitle(String title);
+	
 }

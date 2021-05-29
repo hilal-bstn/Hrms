@@ -17,14 +17,14 @@ public class JobPosition {
 	private int id;
 
 	@Column(name="title")
-	private String Title;
+	private String title;
 	
 	public JobPosition() {}
 	
 	public JobPosition(int id, String title) {
 		super();
 		this.id = id;
-		Title = title;
+		this.title = title;
 	}
 
 	public int getId() {
@@ -36,11 +36,11 @@ public class JobPosition {
 	}
 
 	public String getTitle() {
-		return Title;
+		return title;
 	}
 
 	public void setTitle(String title) {
-		Title = title;
+		this.title = title;
 	}
 	
 }

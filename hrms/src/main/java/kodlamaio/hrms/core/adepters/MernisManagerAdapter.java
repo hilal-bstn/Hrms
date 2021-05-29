@@ -4,7 +4,7 @@ public class MernisManagerAdapter implements UserVerificationService {
 
 	@Override
 	public boolean identityVerification(String identityNumber, String firstName, String lastName, String yearOfBirth) {
-		return true;
+		return true;//sahte doğrulama..
 	}
 	
 }

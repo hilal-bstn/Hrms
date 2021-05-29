@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.JobSeekerService;
-import kodlamaio.hrms.business.abstracts.UserService;
-import kodlamaio.hrms.core.adepters.UserVerificationService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.ErrorResult;
 import kodlamaio.hrms.core.utilities.results.Result;
@@ -20,14 +18,14 @@ import kodlamaio.hrms.entities.concretes.JobSeeker;
 public class JobSeekerManager implements JobSeekerService {
 	
 	private JobSeekerDao jobSeekerDao;
-	private UserVerificationService userVerificationService;
-	private UserService userService;
+
+
 	@Autowired
-	public JobSeekerManager(JobSeekerDao jobSeekerDao,UserVerificationService userVerificationService,UserService userService) {
+	public JobSeekerManager(JobSeekerDao jobSeekerDao)
+	{
 		super();
 		this.jobSeekerDao = jobSeekerDao;
-		this.userVerificationService=userVerificationService;
-		this.userService=userService;
+		
 	}
 
 	@Override
@@ -37,9 +35,8 @@ public class JobSeekerManager implements JobSeekerService {
 
 	@Override
 	public Result add(JobSeeker jobSeeker) {
-		boolean identityVerification=this.userVerificationService.identityVerification(jobSeeker.getIdentityNumber(), jobSeeker.getFirstName(), jobSeeker.getLastName(), jobSeeker.getYearOfBirth());
-
-		if(identityVerification)
+		
+		if(this.getByIdentityNumber(jobSeeker.getIdentityNumber()).getData()==null)
 		{
 			this.jobSeekerDao.save(jobSeeker);
 			return new SuccessResult("İş arayan eklendi.");
@@ -47,9 +44,9 @@ public class JobSeekerManager implements JobSeekerService {
 		return new ErrorResult("kullanıcı kaydı tamamlanamıyor.");
 	}
 	
-	private void getByIdentityNumber(String identityNumber)//publicte olabilir.
-	{
-		//daha önce tc kimlik numarası kullanılmış mı
+	@Override
+	public DataResult<JobSeeker> getByIdentityNumber(String identityNumber) {
+		return new SuccessDataResult<JobSeeker>(this.jobSeekerDao.getByIdentityNumber(identityNumber));
 	}
 
 }

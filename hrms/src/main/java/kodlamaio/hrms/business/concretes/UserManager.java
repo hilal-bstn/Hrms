@@ -4,7 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.UserService;
+import kodlamaio.hrms.core.utilities.results.DataResult;
+import kodlamaio.hrms.core.utilities.results.ErrorResult;
 import kodlamaio.hrms.core.utilities.results.Result;
+import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.UserDao;
 import kodlamaio.hrms.entities.concretes.User;
@@ -20,13 +23,18 @@ public class UserManager implements UserService {
 	}
 	@Override
 	public Result add(User user) {
-		this.userDao.save(user);
-		return new SuccessResult("kullanıcı eklendi");
+		if(this.getByEmail(user.getEmail()).getData()==null)
+		{
+			this.userDao.save(user);
+			return new SuccessResult("kullanıcı eklendi");
+		}
+		return new ErrorResult("kullanıcı kaydı tamalanamıyor.");
 	}
 	@Override
-	public void getByEmail(String email) {
+	public DataResult<User> getByEmail(String email) {
 		
-		//return user olmalı
+		return new SuccessDataResult<User>(this.userDao.getByEmail(email));
+				
 	}
 
 	
