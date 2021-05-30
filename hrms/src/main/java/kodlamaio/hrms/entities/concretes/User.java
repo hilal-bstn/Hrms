@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="users")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","users"})
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobSeekers","employers"})
 public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -27,6 +27,9 @@ public class User {
 	
 	@OneToOne(mappedBy="user")
 	private JobSeeker jobSeeker;
+	
+	@OneToOne(mappedBy="user")
+	private Employer employer;
 	
 	public User() {}
 	
