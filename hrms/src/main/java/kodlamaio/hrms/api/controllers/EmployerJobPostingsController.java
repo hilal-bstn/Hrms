@@ -29,6 +29,12 @@ public class EmployerJobPostingsController {
 		return this.employerJobPostingService.getByIsActive();
 	}
 	
+	@GetMapping("/getByReleaseDateAndIsActiveSorted")
+	public DataResult<List<EmployerJobPosting>> getByReleaseDateAndIsActiveSorted()
+	{
+		return this.employerJobPostingService.getByReleaseDateAndIsActiveSorted();
+	}
+	
 	@PostMapping("/add")
 	public Result add(EmployerJobPosting employerJobPosting)
 	{

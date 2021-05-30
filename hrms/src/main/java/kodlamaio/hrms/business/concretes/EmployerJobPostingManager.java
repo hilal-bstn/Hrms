@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.EmployerJobPostingService;
@@ -61,8 +60,8 @@ public class EmployerJobPostingManager implements EmployerJobPostingService  {
 
 	@Override
 	public DataResult<List<EmployerJobPosting>> getByReleaseDateAndIsActiveSorted() {
-		Sort sort = Sort.by(Sort.Direction.DESC,"releaseDate");
-		return null;
+		
+		return new SuccessDataResult<List<EmployerJobPosting>>(this.employerJobPostingDao.getByReleaseDateDesc());
 	}
 
 }
