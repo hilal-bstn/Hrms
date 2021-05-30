@@ -1,14 +1,20 @@
 package kodlamaio.hrms.entities.concretes;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="employers")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","employers"})
 public class Employer {
 
 	@Id
@@ -23,9 +29,13 @@ public class Employer {
 	private int companyId;
 	
 	
+	@OneToMany(mappedBy="employer")
+	private List<EmployerJobPosting> employerJobPosting;
+	
+	
+	
 	public Employer() {}
-
-
+	
 	public Employer(int id, int userId, int companyId) {
 		super();
 		this.id = id;

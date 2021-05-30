@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -19,14 +21,17 @@ public class EmployerJobPosting {
 	@Column(name="id")
 	private int id;
 
-	@Column(name="employer_id")
-	private int employerId;
+	@ManyToOne()
+	@JoinColumn(name="employer_id")
+	private Employer employer;
 	
-	@Column(name="job_position_id")
-	private int jobPositionId;
+	@ManyToOne()
+	@JoinColumn(name="job_position_id")
+	private JobPosition jobPosition;
 	
-	@Column(name="city_id")
-	private int cityId;
+	@ManyToOne()
+	@JoinColumn(name="city_id")
+	private City city;
 	
 	@Column(name="job_description")
 	private String jobDescription;
@@ -53,26 +58,26 @@ public class EmployerJobPosting {
 
 	public EmployerJobPosting() {}
 
-	public EmployerJobPosting(int id, int employerId, int jobPositionId, int cityId, String jobDescription,
+	public EmployerJobPosting(int id, Employer employer, JobPosition jobPosition, City city, String jobDescription,
 			double minSalary, double maxSalary, int openPositionCount, LocalDateTime applicationDeadline) {
 		super();
 		this.id = id;
-		this.employerId = employerId;
-		this.jobPositionId = jobPositionId;
-		this.cityId = cityId;
+		this.employer = employer;
+		this.jobPosition = jobPosition;
+		this.city = city;
 		this.jobDescription = jobDescription;
 		this.minSalary = minSalary;
 		this.maxSalary = maxSalary;
 		this.openPositionCount = openPositionCount;
 		this.applicationDeadline = applicationDeadline;
 	}
-	public EmployerJobPosting(int id, int employerId, int jobPositionId, int cityId, String jobDescription,
+	public EmployerJobPosting(int id, Employer employer, JobPosition jobPosition, City city, String jobDescription,
 			int openPositionCount,LocalDateTime applicationDeadLine ) {
 		super();
 		this.id = id;
-		this.employerId = employerId;
-		this.jobPositionId = jobPositionId;
-		this.cityId = cityId;
+		this.employer = employer;
+		this.jobPosition = jobPosition;
+		this.city = city;
 		this.jobDescription = jobDescription;
 		this.openPositionCount = openPositionCount;
 		this.applicationDeadline = applicationDeadLine;
@@ -84,30 +89,6 @@ public class EmployerJobPosting {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public int getEmployerId() {
-		return employerId;
-	}
-
-	public void setEmployerId(int employerId) {
-		this.employerId = employerId;
-	}
-
-	public int getJobPositionId() {
-		return jobPositionId;
-	}
-
-	public void setJobPositionId(int jobPositionId) {
-		this.jobPositionId = jobPositionId;
-	}
-
-	public int getCityId() {
-		return cityId;
-	}
-
-	public void setCityId(int cityId) {
-		this.cityId = cityId;
 	}
 
 	public String getJobDescription() {
@@ -165,6 +146,30 @@ public class EmployerJobPosting {
 
 	public void setApplicationDeadline(LocalDateTime applicationDeadline) {
 		this.applicationDeadline = applicationDeadline;
+	}
+
+	public City getCity() {
+		return city;
+	}
+
+	public void setCity(City city) {
+		this.city = city;
+	}
+
+	public JobPosition getJobPosition() {
+		return jobPosition;
+	}
+
+	public void setJobPosition(JobPosition jobPosition) {
+		this.jobPosition = jobPosition;
+	}
+
+	public Employer getEmployer() {
+		return employer;
+	}
+
+	public void setEmployer(Employer employer) {
+		this.employer = employer;
 	}
 
 
