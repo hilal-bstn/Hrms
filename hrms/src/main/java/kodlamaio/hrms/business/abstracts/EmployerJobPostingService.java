@@ -7,12 +7,15 @@ import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concretes.EmployerJobPosting;
 
 public interface EmployerJobPostingService {
-	DataResult<List<EmployerJobPosting>> getAll();
+	DataResult<List<EmployerJobPosting>> getByIsActive();
 	
 	Result add(EmployerJobPosting employerJobPosting);
 	
-	Result delete(int id);
+	Result delete(int id);//pasif hale getirme
 	
-	DataResult<EmployerJobPosting> getById(int Id);
+	DataResult<List<EmployerJobPosting>> getByEmployerIdAndIsActive(int Id);
 	
+	DataResult<EmployerJobPosting> getById(int id);
+	
+	DataResult<List<EmployerJobPosting>> getByReleaseDateAndIsActiveSorted();
 }

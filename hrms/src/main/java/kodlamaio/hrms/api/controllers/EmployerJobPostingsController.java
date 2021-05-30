@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import kodlamaio.hrms.business.abstracts.EmployerJobPostingService;
@@ -22,10 +23,10 @@ public class EmployerJobPostingsController {
 		super();
 		this.employerJobPostingService = employerJobPostingService;
 	}
-	@GetMapping("/getall")
-	public DataResult<List<EmployerJobPosting>> getAll()
+	@GetMapping("/getbyisactive")
+	public DataResult<List<EmployerJobPosting>> getByIsActive()
 	{
-		return this.employerJobPostingService.getAll();
+		return this.employerJobPostingService.getByIsActive();
 	}
 	
 	@PostMapping("/add")
@@ -33,6 +34,10 @@ public class EmployerJobPostingsController {
 	{
 		return this.employerJobPostingService.add(employerJobPosting);
 	}
-
 	
+	@PostMapping("/delete")
+	public Result delete(@RequestParam int id)
+	{
+		return this.employerJobPostingService.delete(id);
+	}
 }

@@ -1,6 +1,7 @@
 package kodlamaio.hrms.entities.concretes;
 
-import java.time.LocalDate;
+
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name="employer_job_postings")
@@ -39,19 +41,20 @@ public class EmployerJobPosting {
 	private int openPositionCount;
 	
 	@Column(name="release_date")
-	private LocalDate releaseDate;
+	private LocalDateTime releaseDate;
 	
 	@Column(name="application_deadline")
-	private LocalDate applicationDeadline;
+	private LocalDateTime applicationDeadline;
 	
 	@Column(name="is_active")
 	private Boolean isActive;
 	
+	
+
 	public EmployerJobPosting() {}
 
 	public EmployerJobPosting(int id, int employerId, int jobPositionId, int cityId, String jobDescription,
-			double minSalary, double maxSalary, int openPositionCount, LocalDate releaseDate, LocalDate applicationDeadline,
-			Boolean isActive) {
+			double minSalary, double maxSalary, int openPositionCount, LocalDateTime applicationDeadline) {
 		super();
 		this.id = id;
 		this.employerId = employerId;
@@ -61,9 +64,18 @@ public class EmployerJobPosting {
 		this.minSalary = minSalary;
 		this.maxSalary = maxSalary;
 		this.openPositionCount = openPositionCount;
-		this.releaseDate = releaseDate;
 		this.applicationDeadline = applicationDeadline;
-		this.isActive = isActive;
+	}
+	public EmployerJobPosting(int id, int employerId, int jobPositionId, int cityId, String jobDescription,
+			int openPositionCount,LocalDateTime applicationDeadLine ) {
+		super();
+		this.id = id;
+		this.employerId = employerId;
+		this.jobPositionId = jobPositionId;
+		this.cityId = cityId;
+		this.jobDescription = jobDescription;
+		this.openPositionCount = openPositionCount;
+		this.applicationDeadline = applicationDeadLine;
 	}
 
 	public int getId() {
@@ -130,21 +142,6 @@ public class EmployerJobPosting {
 		this.openPositionCount = openPositionCount;
 	}
 
-	public LocalDate getReleaseDate() {
-		return releaseDate;
-	}
-
-	public void setReleaseDate(LocalDate releaseDate) {
-		this.releaseDate = releaseDate;
-	}
-
-	public LocalDate getApplicationDeadline() {
-		return applicationDeadline;
-	}
-
-	public void setApplicationDeadline(LocalDate applicationDeadline) {
-		this.applicationDeadline = applicationDeadline;
-	}
 
 	public Boolean getIsActive() {
 		return isActive;
@@ -152,6 +149,22 @@ public class EmployerJobPosting {
 
 	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
+	}
+
+	public LocalDateTime getReleaseDate() {
+		return releaseDate;
+	}
+
+	public void setReleaseDate(LocalDateTime releaseDate) {
+		this.releaseDate = releaseDate;
+	}
+
+	public LocalDateTime getApplicationDeadline() {
+		return applicationDeadline;
+	}
+
+	public void setApplicationDeadline(LocalDateTime applicationDeadline) {
+		this.applicationDeadline = applicationDeadline;
 	}
 
 
