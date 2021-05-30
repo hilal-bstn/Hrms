@@ -1,19 +1,14 @@
 package kodlamaio.hrms.entities.concretes;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="users")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobSeekers","employers"})
 public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -25,13 +20,6 @@ public class User {
 	
 	@Column(name="password")
 	private String password;
-	
-	
-	@OneToOne(mappedBy="user")
-	private JobSeeker jobSeeker;
-	
-	@OneToOne(mappedBy="user")
-	private Employer employer;
 	
 	public User() {}
 	
