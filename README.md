@@ -1,5 +1,4 @@
 # Hrms
 
-## Database(PostgreSql):
 
 
