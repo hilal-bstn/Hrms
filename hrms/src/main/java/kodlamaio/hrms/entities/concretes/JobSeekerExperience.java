@@ -1,7 +1,5 @@
 package kodlamaio.hrms.entities.concretes;
 
-import java.sql.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,15 +25,15 @@ public class JobSeekerExperience {
 	private int jobPositionId;
 	
 	@Column(name="employment_start_date")
-	private Date employmentStartDate;
+	private String employmentStartDate;
 	
 	@Column(name="termination_date")
-	private Date terminationDate;
+	private String terminationDate;
 
 	public JobSeekerExperience() {}
-	
-	public JobSeekerExperience(int id, int jobSeekerId, int companyId, int jobPositionId, Date employmentStartDate,
-			Date terminationDate) {
+
+	public JobSeekerExperience(int id, int jobSeekerId, int companyId, int jobPositionId, String employmentStartDate,
+			String terminationDate) {
 		super();
 		this.id = id;
 		this.jobSeekerId = jobSeekerId;
@@ -77,19 +75,20 @@ public class JobSeekerExperience {
 		this.jobPositionId = jobPositionId;
 	}
 
-	public Date getEmploymentStartDate() {
+	public String getEmploymentStartDate() {
 		return employmentStartDate;
 	}
 
-	public void setEmploymentStartDate(Date employmentStartDate) {
+	public void setEmploymentStartDate(String employmentStartDate) {
 		this.employmentStartDate = employmentStartDate;
 	}
 
-	public Date getTerminationDate() {
+	public String getTerminationDate() {
 		return terminationDate;
 	}
 
-	public void setTerminationDate(Date terminationDate) {
+	public void setTerminationDate(String terminationDate) {
 		this.terminationDate = terminationDate;
 	}
+	
 }

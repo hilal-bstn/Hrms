@@ -1,6 +1,5 @@
 package kodlamaio.hrms.entities.concretes;
 
-import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,22 +30,22 @@ public class JobSeekerUniversity {
 	@JoinColumn(name="university_department_id")
 	private UniversityDepartment universityDepartment;
 	
-	@Column(name="entrance_id")
-	private Date entranceId;
+	@Column(name="entrance_date")
+	private String entranceDate;
 	
-	@Column(name="entrance_id")
-	private Date graduationDate;
+	@Column(name="graduation_date")
+	private String graduationDate;
 
 	public JobSeekerUniversity() {}
-	
-	public JobSeekerUniversity(int id, int jobSeekerId, University university, UniversityDepartment universityDepartment, Date entranceId,
-			Date graduationDate) {
+
+	public JobSeekerUniversity(int id, int jobSeekerId, University university,
+			UniversityDepartment universityDepartment, String entranceDate, String graduationDate) {
 		super();
 		this.id = id;
 		this.jobSeekerId = jobSeekerId;
 		this.university = university;
 		this.universityDepartment = universityDepartment;
-		this.entranceId = entranceId;
+		this.entranceDate = entranceDate;
 		this.graduationDate = graduationDate;
 	}
 
@@ -66,7 +65,13 @@ public class JobSeekerUniversity {
 		this.jobSeekerId = jobSeekerId;
 	}
 
-	
+	public University getUniversity() {
+		return university;
+	}
+
+	public void setUniversity(University university) {
+		this.university = university;
+	}
 
 	public UniversityDepartment getUniversityDepartment() {
 		return universityDepartment;
@@ -76,27 +81,22 @@ public class JobSeekerUniversity {
 		this.universityDepartment = universityDepartment;
 	}
 
-	public Date getEntranceId() {
-		return entranceId;
+	public String getEntranceDate() {
+		return entranceDate;
 	}
 
-	public void setEntranceId(Date entranceId) {
-		this.entranceId = entranceId;
+	public void setEntranceDate(String entranceDate) {
+		this.entranceDate = entranceDate;
 	}
 
-	public Date getGraduationDate() {
+	public String getGraduationDate() {
 		return graduationDate;
 	}
 
-	public void setGraduationDate(Date graduationDate) {
+	public void setGraduationDate(String graduationDate) {
 		this.graduationDate = graduationDate;
 	}
 
-	public University getUniversity() {
-		return university;
-	}
-
-	public void setUniversity(University university) {
-		this.university = university;
-	}
+	
+	
 }

@@ -1,6 +1,7 @@
 package kodlamaio.hrms.business.concretes;
 
-import java.time.LocalDateTime;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ public class EmployerJobPostingManager implements EmployerJobPostingService  {
 	@Override
 	public Result add(EmployerJobPosting employerJobPosting) 
 	{ 
-		employerJobPosting.setReleaseDate(LocalDateTime.now());
+		employerJobPosting.setReleaseDate(Date.valueOf(LocalDate.now()));
 		employerJobPosting.setIsActive(true);
 		this.employerJobPostingDao.save(employerJobPosting);
 		return new SuccessResult("İş ilanı başarıyla oluşturulmuştur.");
