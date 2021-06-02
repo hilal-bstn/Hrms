@@ -10,11 +10,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="job_seeker_experiences")
+@Table(name="job_seeker_languages")
 public class JobSeekerLanguage {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="job_seeker_experience_id")
+	@Column(name="job_seeker_language_id")
 	private int id;
 
 	@ManyToOne()
