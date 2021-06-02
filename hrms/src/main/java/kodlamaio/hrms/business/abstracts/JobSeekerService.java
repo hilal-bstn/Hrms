@@ -14,4 +14,5 @@ public interface JobSeekerService {
 	Result add(JobSeeker jobSeeker);
 	
 	DataResult<JobSeeker> getByIdentityNumber(String identityNumber);
+	
 }

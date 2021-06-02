@@ -49,4 +49,6 @@ public class JobSeekerManager implements JobSeekerService {
 		return new SuccessDataResult<JobSeeker>(this.jobSeekerDao.getByIdentityNumber(identityNumber));
 	}
 
+	
+
 }

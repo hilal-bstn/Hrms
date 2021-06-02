@@ -1,11 +1,14 @@
 package kodlamaio.hrms.api.controllers;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import kodlamaio.hrms.business.abstracts.JobSeekerContactService;
+import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concretes.JobSeekerContact;
 
@@ -22,5 +25,11 @@ public class JobSeekerContactController {
 	public Result add(JobSeekerContact jobSeekerContact)
 	{
 		return this.jobSeekerContactService.add(jobSeekerContact);
+	}
+	
+	@GetMapping("/getbyjobseekerid")
+	public DataResult<JobSeekerContact> getByJobSeekerId(int id)
+	{
+		return this.jobSeekerContactService.getByJobSeekerId(id);
 	}
 }

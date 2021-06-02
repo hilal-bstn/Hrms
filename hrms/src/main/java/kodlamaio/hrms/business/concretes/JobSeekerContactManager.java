@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.JobSeekerContactService;
+import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
+import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.JobSeekerContactDao;
 import kodlamaio.hrms.entities.concretes.JobSeekerContact;
@@ -21,5 +23,9 @@ public class JobSeekerContactManager implements JobSeekerContactService{
 	public Result add(JobSeekerContact jobSeekerContact) {
 		this.jobSeekerContactDao.save(jobSeekerContact);
 		return new SuccessResult();
+	}
+	@Override
+	public DataResult<JobSeekerContact> getByJobSeekerId(int id) {
+		return new SuccessDataResult<JobSeekerContact>(this.jobSeekerContactDao.getByJobSeekerId(id));
 	}
 }

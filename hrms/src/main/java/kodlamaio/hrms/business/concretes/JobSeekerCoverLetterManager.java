@@ -1,10 +1,14 @@
 package kodlamaio.hrms.business.concretes;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.JobSeekerCoverLetterService;
+import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
+import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.JobSeekerCoverLetterDao;
 import kodlamaio.hrms.entities.concretes.JobSeekerCoverLetter;
@@ -21,5 +25,9 @@ public class JobSeekerCoverLetterManager implements JobSeekerCoverLetterService{
 	public Result add(JobSeekerCoverLetter jobSeekerCoverLetter) {
 		this.jobSeekerCoverLetterDao.save(jobSeekerCoverLetter);
 		return new SuccessResult();
+	}
+	@Override
+	public DataResult<List<JobSeekerCoverLetter>> getByJobSeekerId(int id) {
+		return new SuccessDataResult<List<JobSeekerCoverLetter>>(this.jobSeekerCoverLetterDao.getByJobSeekerId(id));
 	}
 }
