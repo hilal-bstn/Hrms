@@ -1,20 +1,27 @@
 package kodlamaio.hrms.entities.concretes;
 
+
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name="job_seekers")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobSeekerContact","jobSeekerCoverLetters","jobSeekerExperiences","jobSeekerLanguages","jobSeekerTechnologies","jobSeekerUniversities"})
 public class JobSeeker {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id")
+	@Column(name="job_seeker_id")
 	private int id;
 
 	@OneToOne()
@@ -32,10 +39,31 @@ public class JobSeeker {
 	
 	@Column(name="year_of_birth")
 	private String yearOfBirth;
+	
+	@OneToOne(mappedBy="jobSeeker")
+	private JobSeekerContact jobSeekerContact;
+	
+	@OneToMany(mappedBy="jobSeeker")
+	private List<JobSeekerCoverLetter> jobSeekerCoverLetters;
+	
+	@OneToMany(mappedBy="jobSeeker")
+	private List<JobSeekerExperience> jobSeekerExperiences;
+	
+	@OneToMany(mappedBy="jobSeeker")
+	private List<JobSeekerLanguage> jobSeekerLanguages;
+	
+	@OneToMany(mappedBy="jobSeeker")
+	private List<JobSeekerTechnology> jobSeekerTechnologies;
+	
+	@OneToMany(mappedBy="jobSeeker")
+	private List<JobSeekerUniversity> jobSeekerUniversities;
     
 	public JobSeeker() {}
-	
-	public JobSeeker(int id, User user, String firstName, String lastName, String identityNumber, String yearOfBirth) {
+
+	public JobSeeker(int id, User user, String firstName, String lastName, String identityNumber, String yearOfBirth,
+			JobSeekerContact jobSeekerContact, List<JobSeekerCoverLetter> jobSeekerCoverLetters,
+			List<JobSeekerExperience> jobSeekerExperiences, List<JobSeekerLanguage> jobSeekerLanguages,
+			List<JobSeekerTechnology> jobSeekerTechnologies, List<JobSeekerUniversity> jobSeekerUniversities) {
 		super();
 		this.id = id;
 		this.user = user;
@@ -43,6 +71,12 @@ public class JobSeeker {
 		this.lastName = lastName;
 		this.identityNumber = identityNumber;
 		this.yearOfBirth = yearOfBirth;
+		this.jobSeekerContact = jobSeekerContact;
+		this.jobSeekerCoverLetters = jobSeekerCoverLetters;
+		this.jobSeekerExperiences = jobSeekerExperiences;
+		this.jobSeekerLanguages = jobSeekerLanguages;
+		this.jobSeekerTechnologies = jobSeekerTechnologies;
+		this.jobSeekerUniversities = jobSeekerUniversities;
 	}
 
 	public int getId() {
@@ -52,6 +86,15 @@ public class JobSeeker {
 	public void setId(int id) {
 		this.id = id;
 	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -84,14 +127,54 @@ public class JobSeeker {
 		this.yearOfBirth = yearOfBirth;
 	}
 
-	public User getUser() {
-		return user;
+	public JobSeekerContact getJobSeekerContact() {
+		return jobSeekerContact;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setJobSeekerContact(JobSeekerContact jobSeekerContact) {
+		this.jobSeekerContact = jobSeekerContact;
 	}
 
+	public List<JobSeekerCoverLetter> getJobSeekerCoverLetters() {
+		return jobSeekerCoverLetters;
+	}
 
+	public void setJobSeekerCoverLetters(List<JobSeekerCoverLetter> jobSeekerCoverLetters) {
+		this.jobSeekerCoverLetters = jobSeekerCoverLetters;
+	}
+
+	public List<JobSeekerExperience> getJobSeekerExperiences() {
+		return jobSeekerExperiences;
+	}
+
+	public void setJobSeekerExperiences(List<JobSeekerExperience> jobSeekerExperiences) {
+		this.jobSeekerExperiences = jobSeekerExperiences;
+	}
+
+	public List<JobSeekerLanguage> getJobSeekerLanguages() {
+		return jobSeekerLanguages;
+	}
+
+	public void setJobSeekerLanguages(List<JobSeekerLanguage> jobSeekerLanguages) {
+		this.jobSeekerLanguages = jobSeekerLanguages;
+	}
+
+	public List<JobSeekerTechnology> getJobSeekerTechnologies() {
+		return jobSeekerTechnologies;
+	}
+
+	public void setJobSeekerTechnologies(List<JobSeekerTechnology> jobSeekerTechnologies) {
+		this.jobSeekerTechnologies = jobSeekerTechnologies;
+	}
+
+	public List<JobSeekerUniversity> getJobSeekerUniversities() {
+		return jobSeekerUniversities;
+	}
+
+	public void setJobSeekerUniversities(List<JobSeekerUniversity> jobSeekerUniversities) {
+		this.jobSeekerUniversities = jobSeekerUniversities;
+	}
+	
+	
 	
 }

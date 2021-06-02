@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -12,35 +14,37 @@ import javax.persistence.Table;
 public class JobSeekerExperience {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id")
+	@Column(name="job_seeker_experience_id")
 	private int id;
 
-	@Column(name="job_seeker_id")
-	private int jobSeekerId;
+	@ManyToOne()
+	@JoinColumn(name="job_seeker_id")
+	private JobSeeker jobSeeker;
 	
-	@Column(name="cover_letter")
-	private int companyId;
+	@Column(name="companyName")
+	private String companyName;
 	
-	@Column(name="job_position_id")
-	private int jobPositionId;
+	@ManyToOne()
+	@JoinColumn(name="job_position_id")
+	private JobPosition jobPosition;
 	
-	@Column(name="employment_start_date")
-	private String employmentStartDate;
+	@Column(name="employment_start_year")
+	private String employmentStartYear;
 	
-	@Column(name="termination_date")
-	private String terminationDate;
+	@Column(name="termination_year")
+	private String terminationYear;
 
 	public JobSeekerExperience() {}
 
-	public JobSeekerExperience(int id, int jobSeekerId, int companyId, int jobPositionId, String employmentStartDate,
-			String terminationDate) {
+	public JobSeekerExperience(int id, JobSeeker jobSeeker, String companyName, JobPosition jobPosition,
+			String employmentStartYear, String terminationYear) {
 		super();
 		this.id = id;
-		this.jobSeekerId = jobSeekerId;
-		this.companyId = companyId;
-		this.jobPositionId = jobPositionId;
-		this.employmentStartDate = employmentStartDate;
-		this.terminationDate = terminationDate;
+		this.jobSeeker = jobSeeker;
+		this.companyName = companyName;
+		this.jobPosition = jobPosition;
+		this.employmentStartYear = employmentStartYear;
+		this.terminationYear = terminationYear;
 	}
 
 	public int getId() {
@@ -51,44 +55,47 @@ public class JobSeekerExperience {
 		this.id = id;
 	}
 
-	public int getJobSeekerId() {
-		return jobSeekerId;
+	public JobSeeker getJobSeeker() {
+		return jobSeeker;
 	}
 
-	public void setJobSeekerId(int jobSeekerId) {
-		this.jobSeekerId = jobSeekerId;
+	public void setJobSeeker(JobSeeker jobSeeker) {
+		this.jobSeeker = jobSeeker;
 	}
 
-	public int getCompanyId() {
-		return companyId;
+	public String getCompanyName() {
+		return companyName;
 	}
 
-	public void setCompanyId(int companyId) {
-		this.companyId = companyId;
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
 	}
 
-	public int getJobPositionId() {
-		return jobPositionId;
+	public JobPosition getJobPosition() {
+		return jobPosition;
 	}
 
-	public void setJobPositionId(int jobPositionId) {
-		this.jobPositionId = jobPositionId;
+	public void setJobPosition(JobPosition jobPosition) {
+		this.jobPosition = jobPosition;
 	}
 
-	public String getEmploymentStartDate() {
-		return employmentStartDate;
+	public String getEmploymentStartYear() {
+		return employmentStartYear;
 	}
 
-	public void setEmploymentStartDate(String employmentStartDate) {
-		this.employmentStartDate = employmentStartDate;
+	public void setEmploymentStartYear(String employmentStartYear) {
+		this.employmentStartYear = employmentStartYear;
 	}
 
-	public String getTerminationDate() {
-		return terminationDate;
+	public String getTerminationYear() {
+		return terminationYear;
 	}
 
-	public void setTerminationDate(String terminationDate) {
-		this.terminationDate = terminationDate;
+	public void setTerminationYear(String terminationYear) {
+		this.terminationYear = terminationYear;
 	}
+
+	
+	
 	
 }

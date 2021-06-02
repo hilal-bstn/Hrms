@@ -20,7 +20,7 @@ import javax.persistence.Table;
 public class EmployerJobPosting {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id")
+	@Column(name="employer_job_posting_id")
 	private int id;
 
 	@ManyToOne()
@@ -210,9 +210,6 @@ public class EmployerJobPosting {
 	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
 	}
-
-	
-
 
 	
 }

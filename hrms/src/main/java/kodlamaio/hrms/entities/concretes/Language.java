@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Language {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id")
+	@Column(name="language_id")
 	private int id;
 
 	@Column(name="name")
@@ -30,10 +30,11 @@ public class Language {
 	
 	public Language() {}
 
-	public Language(int id, String name) {
+	public Language(int id, String name, List<JobSeekerLanguage> jobSeekerLanguages) {
 		super();
 		this.id = id;
 		this.name = name;
+		JobSeekerLanguages = jobSeekerLanguages;
 	}
 
 	public int getId() {
@@ -51,5 +52,14 @@ public class Language {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public List<JobSeekerLanguage> getJobSeekerLanguages() {
+		return JobSeekerLanguages;
+	}
+
+	public void setJobSeekerLanguages(List<JobSeekerLanguage> jobSeekerLanguages) {
+		JobSeekerLanguages = jobSeekerLanguages;
+	}
+
 	
 }

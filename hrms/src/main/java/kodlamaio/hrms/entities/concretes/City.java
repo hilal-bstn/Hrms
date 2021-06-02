@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class City {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id")
+	@Column(name="city_id")
 	private int id;
 
 	@Column(name="name")
@@ -30,10 +30,11 @@ public class City {
 	
 	public City() {}
 
-	public City(int id, String name) {
+	public City(int id, String name, List<EmployerJobPosting> employerJobPostings) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.employerJobPostings = employerJobPostings;
 	}
 
 	public int getId() {
@@ -51,4 +52,14 @@ public class City {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public List<EmployerJobPosting> getEmployerJobPostings() {
+		return employerJobPostings;
+	}
+
+	public void setEmployerJobPostings(List<EmployerJobPosting> employerJobPostings) {
+		this.employerJobPostings = employerJobPostings;
+	}
+
+	
 }

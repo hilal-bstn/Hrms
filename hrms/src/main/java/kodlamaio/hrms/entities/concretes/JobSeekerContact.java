@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -12,11 +14,12 @@ import javax.persistence.Table;
 public class JobSeekerContact {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id")
+	@Column(name="job_seeker_contact_id")
 	private int id;
 
-	@Column(name="job_seeker_id")
-	private int jobSeekerId;
+	@OneToOne()
+	@JoinColumn(name="job_seeker_id")
+	private JobSeeker jobSeeker;
 	
 	@Column(name="github")
 	private String github;
@@ -26,10 +29,10 @@ public class JobSeekerContact {
 
 	public JobSeekerContact() {}
 
-	public JobSeekerContact(int id, int jobSeekerId, String github, String linkedin) {
+	public JobSeekerContact(int id, JobSeeker jobSeeker, String github, String linkedin) {
 		super();
 		this.id = id;
-		this.jobSeekerId = jobSeekerId;
+		this.jobSeeker = jobSeeker;
 		this.github = github;
 		this.linkedin = linkedin;
 	}
@@ -42,12 +45,12 @@ public class JobSeekerContact {
 		this.id = id;
 	}
 
-	public int getJobSeekerId() {
-		return jobSeekerId;
+	public JobSeeker getJobSeeker() {
+		return jobSeeker;
 	}
 
-	public void setJobSeekerId(int jobSeekerId) {
-		this.jobSeekerId = jobSeekerId;
+	public void setJobSeeker(JobSeeker jobSeeker) {
+		this.jobSeeker = jobSeeker;
 	}
 
 	public String getGithub() {
@@ -65,6 +68,7 @@ public class JobSeekerContact {
 	public void setLinkedin(String linkedin) {
 		this.linkedin = linkedin;
 	}
+
 	
 	
 	

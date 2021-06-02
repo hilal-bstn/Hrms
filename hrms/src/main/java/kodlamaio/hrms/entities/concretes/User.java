@@ -7,22 +7,30 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="users")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobSeekers","employers"})
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobSeeker","employer"})
 public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id")
+	@Column(name="user_id")
 	private int id;
 
 	@Column(name="email")
+	@Email
+	@NotBlank
+	@NotNull
 	private String email;
 	
 	@Column(name="password")
+	@NotBlank
+	@NotNull
 	private String password;
 	
 	@OneToOne(mappedBy="user")
@@ -32,12 +40,15 @@ public class User {
 	private Employer employer;
 	
 	public User() {}
-	
-	public User(int id, String email, String password) {
+
+	public User(int id, @Email @NotBlank @NotNull String email, @NotBlank @NotNull String password, JobSeeker jobSeeker,
+			Employer employer) {
 		super();
 		this.id = id;
 		this.email = email;
 		this.password = password;
+		this.jobSeeker = jobSeeker;
+		this.employer = employer;
 	}
 
 	public int getId() {
@@ -64,5 +75,22 @@ public class User {
 		this.password = password;
 	}
 
+	public JobSeeker getJobSeeker() {
+		return jobSeeker;
+	}
+
+	public void setJobSeeker(JobSeeker jobSeeker) {
+		this.jobSeeker = jobSeeker;
+	}
+
+	public Employer getEmployer() {
+		return employer;
+	}
+
+	public void setEmployer(Employer employer) {
+		this.employer = employer;
+	}
+	
+	
 
 }

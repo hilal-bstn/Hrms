@@ -16,32 +16,35 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="employers")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","employers"})
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","employerJobPostings"})
 public class Employer {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id")
+	@Column(name="employer_id")
 	private int id;
 
 	@OneToOne()
 	@JoinColumn(name="user_id")
 	private User user;
 	
-	@Column(name="company_id")
-	private int companyId;
+	@OneToOne()
+	@JoinColumn(name="company_id")
+	private Company company;
 	
 	@OneToMany(mappedBy="employer")
-	private List<EmployerJobPosting> employerJobPosting;
+	private List<EmployerJobPosting> employerJobPostings;
 	
 	
 	public Employer() {}
-	
-	public Employer(int id, User user, int companyId) {
+
+
+	public Employer(int id, User user, Company company, List<EmployerJobPosting> employerJobPostings) {
 		super();
 		this.id = id;
 		this.user = user;
-		this.companyId = companyId;
+		this.company = company;
+		this.employerJobPostings = employerJobPostings;
 	}
 
 
@@ -55,21 +58,35 @@ public class Employer {
 	}
 
 
-	public int getCompanyId() {
-		return companyId;
-	}
-
-
-	public void setCompanyId(int companyId) {
-		this.companyId = companyId;
-	}
-
 	public User getUser() {
 		return user;
 	}
 
+
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+
+	public Company getCompany() {
+		return company;
+	}
+
+
+	public void setCompany(Company company) {
+		this.company = company;
+	}
+
+
+	public List<EmployerJobPosting> getEmployerJobPostings() {
+		return employerJobPostings;
+	}
+
+
+	public void setEmployerJobPostings(List<EmployerJobPosting> employerJobPostings) {
+		this.employerJobPostings = employerJobPostings;
+	}
+	
+	
 	
 }

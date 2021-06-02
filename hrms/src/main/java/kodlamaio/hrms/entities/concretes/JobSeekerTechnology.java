@@ -14,11 +14,12 @@ import javax.persistence.Table;
 public class JobSeekerTechnology {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id")
+	@Column(name="job_seeker_technology_id")
 	private int id;
 
-	@Column(name="job_seeker_id")
-	private int jobSeekerId;
+	@ManyToOne()
+	@JoinColumn(name="job_seeker_id")
+	private JobSeeker jobSeeker;
 	
 	@ManyToOne()
 	@JoinColumn(name="technology_id")
@@ -26,10 +27,10 @@ public class JobSeekerTechnology {
 	
 	public JobSeekerTechnology() {}
 
-	public JobSeekerTechnology(int id, int jobSeekerId, Technology technology) {
+	public JobSeekerTechnology(int id, JobSeeker jobSeeker, Technology technology) {
 		super();
 		this.id = id;
-		this.jobSeekerId = jobSeekerId;
+		this.jobSeeker = jobSeeker;
 		this.technology = technology;
 	}
 
@@ -41,12 +42,12 @@ public class JobSeekerTechnology {
 		this.id = id;
 	}
 
-	public int getJobSeekerId() {
-		return jobSeekerId;
+	public JobSeeker getJobSeeker() {
+		return jobSeeker;
 	}
 
-	public void setJobSeekerId(int jobSeekerId) {
-		this.jobSeekerId = jobSeekerId;
+	public void setJobSeeker(JobSeeker jobSeeker) {
+		this.jobSeeker = jobSeeker;
 	}
 
 	public Technology getTechnology() {
@@ -57,8 +58,6 @@ public class JobSeekerTechnology {
 		this.technology = technology;
 	}
 
-	
-	
 	
 	
 }

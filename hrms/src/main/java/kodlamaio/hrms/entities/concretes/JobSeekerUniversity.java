@@ -16,11 +16,12 @@ import javax.persistence.Table;
 public class JobSeekerUniversity {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id")
+	@Column(name="job_seeker_university_id")
 	private int id;
 
-	@Column(name="job_seeker_id")
-	private int jobSeekerId;
+	@ManyToOne()
+	@JoinColumn(name="job_seeker_id")
+	private JobSeeker jobSeeker;
 	
 	@ManyToOne()
 	@JoinColumn(name="university_id")
@@ -31,22 +32,22 @@ public class JobSeekerUniversity {
 	private UniversityDepartment universityDepartment;
 	
 	@Column(name="entrance_date")
-	private String entranceDate;
+	private String entranceYear;
 	
 	@Column(name="graduation_date")
-	private String graduationDate;
+	private String graduationYear;
 
 	public JobSeekerUniversity() {}
 
-	public JobSeekerUniversity(int id, int jobSeekerId, University university,
-			UniversityDepartment universityDepartment, String entranceDate, String graduationDate) {
+	public JobSeekerUniversity(int id, JobSeeker jobSeeker, University university,
+			UniversityDepartment universityDepartment, String entranceYear, String graduationYear) {
 		super();
 		this.id = id;
-		this.jobSeekerId = jobSeekerId;
+		this.jobSeeker = jobSeeker;
 		this.university = university;
 		this.universityDepartment = universityDepartment;
-		this.entranceDate = entranceDate;
-		this.graduationDate = graduationDate;
+		this.entranceYear = entranceYear;
+		this.graduationYear = graduationYear;
 	}
 
 	public int getId() {
@@ -57,12 +58,12 @@ public class JobSeekerUniversity {
 		this.id = id;
 	}
 
-	public int getJobSeekerId() {
-		return jobSeekerId;
+	public JobSeeker getJobSeeker() {
+		return jobSeeker;
 	}
 
-	public void setJobSeekerId(int jobSeekerId) {
-		this.jobSeekerId = jobSeekerId;
+	public void setJobSeeker(JobSeeker jobSeeker) {
+		this.jobSeeker = jobSeeker;
 	}
 
 	public University getUniversity() {
@@ -81,22 +82,23 @@ public class JobSeekerUniversity {
 		this.universityDepartment = universityDepartment;
 	}
 
-	public String getEntranceDate() {
-		return entranceDate;
+	public String getEntranceYear() {
+		return entranceYear;
 	}
 
-	public void setEntranceDate(String entranceDate) {
-		this.entranceDate = entranceDate;
+	public void setEntranceYear(String entranceYear) {
+		this.entranceYear = entranceYear;
 	}
 
-	public String getGraduationDate() {
-		return graduationDate;
+	public String getGraduationYear() {
+		return graduationYear;
 	}
 
-	public void setGraduationDate(String graduationDate) {
-		this.graduationDate = graduationDate;
+	public void setGraduationYear(String graduationYear) {
+		this.graduationYear = graduationYear;
 	}
 
+	
 	
 	
 }

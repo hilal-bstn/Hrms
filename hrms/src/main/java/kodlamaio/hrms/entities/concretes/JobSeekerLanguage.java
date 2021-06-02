@@ -10,15 +10,16 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="job_seeker_languages")
+@Table(name="job_seeker_experiences")
 public class JobSeekerLanguage {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id")
+	@Column(name="job_seeker_experience_id")
 	private int id;
 
-	@Column(name="job_seeker_id")
-	private int jobSeekerId;
+	@ManyToOne()
+	@JoinColumn(name="job_seeker_id")
+	private JobSeeker jobSeeker;
 	
 	@ManyToOne()
 	@JoinColumn(name="language_id")
@@ -29,10 +30,10 @@ public class JobSeekerLanguage {
 	
 	public JobSeekerLanguage() {}
 
-	public JobSeekerLanguage(int id, int jobSeekerId, Language language, int languageLevel) {
+	public JobSeekerLanguage(int id, JobSeeker jobSeeker, Language language, int languageLevel) {
 		super();
 		this.id = id;
-		this.jobSeekerId = jobSeekerId;
+		this.jobSeeker = jobSeeker;
 		this.language = language;
 		this.languageLevel = languageLevel;
 	}
@@ -45,12 +46,20 @@ public class JobSeekerLanguage {
 		this.id = id;
 	}
 
-	public int getJobSeekerId() {
-		return jobSeekerId;
+	public JobSeeker getJobSeeker() {
+		return jobSeeker;
 	}
 
-	public void setJobSeekerId(int jobSeekerId) {
-		this.jobSeekerId = jobSeekerId;
+	public void setJobSeeker(JobSeeker jobSeeker) {
+		this.jobSeeker = jobSeeker;
+	}
+
+	public Language getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(Language language) {
+		this.language = language;
 	}
 
 	public int getLanguageLevel() {
@@ -61,11 +70,5 @@ public class JobSeekerLanguage {
 		this.languageLevel = languageLevel;
 	}
 
-	public Language getLanguage() {
-		return language;
-	}
-
-	public void setLanguage(Language language) {
-		this.language = language;
-	}
+	
 }
