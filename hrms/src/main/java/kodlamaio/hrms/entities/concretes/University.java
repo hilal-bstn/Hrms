@@ -12,28 +12,28 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@Entity
-@Table(name="job_positions")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobPositions"})
-public class JobPosition {
 
+@Entity
+@Table(name="universities")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobSeekerUniversities"})
+public class University {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
 
-	@Column(name="title")
-	private String title;
+	@Column(name="name")
+	private String name;
 	
-	@OneToMany(mappedBy="jobPosition")
-	private List<EmployerJobPosting> employerJobPosting;
+	@OneToMany(mappedBy="university")
+	private List<JobSeekerUniversity> jobSeekerUniversities;
+
+	public University() {}
 	
-	public JobPosition() {}
-	
-	public JobPosition(int id, String title) {
+	public University(int id, String name) {
 		super();
 		this.id = id;
-		this.title = title;
+		this.name = name;
 	}
 
 	public int getId() {
@@ -44,12 +44,11 @@ public class JobPosition {
 		this.id = id;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getName() {
+		return name;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setName(String name) {
+		this.name = name;
 	}
-	
 }

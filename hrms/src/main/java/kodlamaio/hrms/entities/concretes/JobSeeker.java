@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,8 +17,9 @@ public class JobSeeker {
 	@Column(name="id")
 	private int id;
 
-	@Column(name="user_id")
-	private int userId;
+	@OneToOne()
+	@JoinColumn(name="user_id")
+	private User user;
 	
 	@Column(name="first_name")
 	private String firstName;
@@ -32,10 +35,10 @@ public class JobSeeker {
     
 	public JobSeeker() {}
 	
-	public JobSeeker(int id, int userId, String firstName, String lastName, String identityNumber, String yearOfBirth) {
+	public JobSeeker(int id, User user, String firstName, String lastName, String identityNumber, String yearOfBirth) {
 		super();
 		this.id = id;
-		this.userId = userId;
+		this.user = user;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.identityNumber = identityNumber;
@@ -49,15 +52,6 @@ public class JobSeeker {
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	public int getUserId() {
-		return userId;
-	}
-
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
-
 	public String getFirstName() {
 		return firstName;
 	}
@@ -88,6 +82,14 @@ public class JobSeeker {
 
 	public void setYearOfBirth(String yearOfBirth) {
 		this.yearOfBirth = yearOfBirth;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 

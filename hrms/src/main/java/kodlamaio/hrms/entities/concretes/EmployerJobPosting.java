@@ -1,13 +1,15 @@
 package kodlamaio.hrms.entities.concretes;
 
 
-import java.time.LocalDateTime;
+import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -21,14 +23,17 @@ public class EmployerJobPosting {
 	@Column(name="id")
 	private int id;
 
-	@Column(name="employer_id")
-	private int employerId;
+	@ManyToOne()
+	@JoinColumn(name="employer_id")
+	private Employer employer;
 	
-	@Column(name="job_position_id")
-	private int jobPositionId;
+	@ManyToOne()
+	@JoinColumn(name="job_position_id")
+	private JobPosition jobPosition;
 	
-	@Column(name="city_id")
-	private int cityId;
+	@ManyToOne()
+	@JoinColumn(name="city_id")
+	private City city;
 	
 	@Column(name="job_description")
 	private String jobDescription;
@@ -43,10 +48,10 @@ public class EmployerJobPosting {
 	private int openPositionCount;
 	
 	@Column(name="release_date")
-	private LocalDateTime releaseDate;
+	private Date releaseDate;
 	
 	@Column(name="application_deadline")
-	private LocalDateTime applicationDeadline;
+	private Date applicationDeadline;
 	
 	@Column(name="is_active")
 	private Boolean isActive;
@@ -55,119 +60,158 @@ public class EmployerJobPosting {
 
 	public EmployerJobPosting() {}
 
-	public EmployerJobPosting(int id, int employerId, int jobPositionId, int cityId, String jobDescription,
-			double minSalary, double maxSalary, int openPositionCount, LocalDateTime applicationDeadline) {
+
+
+	public EmployerJobPosting(int id, Employer employer, JobPosition jobPosition, City city, String jobDescription,
+			double minSalary, double maxSalary, int openPositionCount, Date releaseDate, Date applicationDeadline,
+			Boolean isActive) {
 		super();
 		this.id = id;
-		this.employerId = employerId;
-		this.jobPositionId = jobPositionId;
-		this.cityId = cityId;
+		this.employer = employer;
+		this.jobPosition = jobPosition;
+		this.city = city;
 		this.jobDescription = jobDescription;
 		this.minSalary = minSalary;
 		this.maxSalary = maxSalary;
 		this.openPositionCount = openPositionCount;
+		this.releaseDate = releaseDate;
 		this.applicationDeadline = applicationDeadline;
+		this.isActive = isActive;
 	}
-	public EmployerJobPosting(int id, int employerId, int jobPositionId, int cityId, String jobDescription,
-			int openPositionCount,LocalDateTime applicationDeadLine ) {
-		super();
-		this.id = id;
-		this.employerId = employerId;
-		this.jobPositionId = jobPositionId;
-		this.cityId = cityId;
-		this.jobDescription = jobDescription;
-		this.openPositionCount = openPositionCount;
-		this.applicationDeadline = applicationDeadLine;
-	}
+
+
 
 	public int getId() {
 		return id;
 	}
 
+
+
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	public int getEmployerId() {
-		return employerId;
+
+
+	public Employer getEmployer() {
+		return employer;
 	}
 
-	public void setEmployerId(int employerId) {
-		this.employerId = employerId;
+
+
+	public void setEmployer(Employer employer) {
+		this.employer = employer;
 	}
 
-	public int getJobPositionId() {
-		return jobPositionId;
+
+
+	public JobPosition getJobPosition() {
+		return jobPosition;
 	}
 
-	public void setJobPositionId(int jobPositionId) {
-		this.jobPositionId = jobPositionId;
+
+
+	public void setJobPosition(JobPosition jobPosition) {
+		this.jobPosition = jobPosition;
 	}
 
-	public int getCityId() {
-		return cityId;
+
+
+	public City getCity() {
+		return city;
 	}
 
-	public void setCityId(int cityId) {
-		this.cityId = cityId;
+
+
+	public void setCity(City city) {
+		this.city = city;
 	}
+
+
 
 	public String getJobDescription() {
 		return jobDescription;
 	}
 
+
+
 	public void setJobDescription(String jobDescription) {
 		this.jobDescription = jobDescription;
 	}
+
+
 
 	public double getMinSalary() {
 		return minSalary;
 	}
 
+
+
 	public void setMinSalary(double minSalary) {
 		this.minSalary = minSalary;
 	}
+
+
 
 	public double getMaxSalary() {
 		return maxSalary;
 	}
 
+
+
 	public void setMaxSalary(double maxSalary) {
 		this.maxSalary = maxSalary;
 	}
 
+
+
 	public int getOpenPositionCount() {
 		return openPositionCount;
 	}
+
+
 
 	public void setOpenPositionCount(int openPositionCount) {
 		this.openPositionCount = openPositionCount;
 	}
 
 
+
+	public Date getReleaseDate() {
+		return releaseDate;
+	}
+
+
+
+	public void setReleaseDate(Date releaseDate) {
+		this.releaseDate = releaseDate;
+	}
+
+
+
+	public Date getApplicationDeadline() {
+		return applicationDeadline;
+	}
+
+
+
+	public void setApplicationDeadline(Date applicationDeadline) {
+		this.applicationDeadline = applicationDeadline;
+	}
+
+
+
 	public Boolean getIsActive() {
 		return isActive;
 	}
+
+
 
 	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
 	}
 
-	public LocalDateTime getReleaseDate() {
-		return releaseDate;
-	}
-
-	public void setReleaseDate(LocalDateTime releaseDate) {
-		this.releaseDate = releaseDate;
-	}
-
-	public LocalDateTime getApplicationDeadline() {
-		return applicationDeadline;
-	}
-
-	public void setApplicationDeadline(LocalDateTime applicationDeadline) {
-		this.applicationDeadline = applicationDeadline;
-	}
+	
 
 
 	
