@@ -10,5 +10,7 @@ public interface JobSeekerUniversityService {
 	Result add(JobSeekerUniversity jobSeekerUniversity);
 	
 	DataResult<List<JobSeekerUniversity>> getByJobSeekerId(int id);
+	
+	DataResult<List<JobSeekerUniversity>> getGraduationYearDesc(int id);
 
 }

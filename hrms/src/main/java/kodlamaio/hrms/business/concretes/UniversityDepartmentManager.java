@@ -1,6 +1,8 @@
 package kodlamaio.hrms.business.concretes;
 
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,14 +25,14 @@ public class UniversityDepartmentManager implements UniversityDepartmentService 
 		this.universityDepartmentDao = universityDepartmentDao;
 	}
 	@Override
-	public Result add(UniversityDepartment universityDepartment) {
+	@Transactional
+	public DataResult<UniversityDepartment> add(UniversityDepartment universityDepartment) {
 		if(checkUniversityDepartmentName(universityDepartment.getName().toLowerCase()).isSuccess())
 		{
 			universityDepartment.setName(universityDepartment.getName().toLowerCase());
 			this.universityDepartmentDao.save(universityDepartment);
-			return new SuccessResult("Bölüm kaydedildi.");
 		}
-		return new ErrorResult();
+		return new SuccessDataResult<UniversityDepartment>(this.getByName(universityDepartment.getName().toLowerCase()).getData(),"kayıt başarılı");
 		
 	}
 	@Override

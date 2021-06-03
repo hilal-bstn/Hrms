@@ -30,4 +30,8 @@ public class JobSeekerExperienceManager implements JobSeekerExperienceService {
 	public DataResult<List<JobSeekerExperience>> getByJobSeekerId(int id) {
 		return new SuccessDataResult<List<JobSeekerExperience>>(this.jobSeekerExperienceDao.getByJobSeekerId(id));
 	}
+	@Override
+	public DataResult<List<JobSeekerExperience>> getTerminationYearAsc(int id) {
+		return new SuccessDataResult<List<JobSeekerExperience>>(this.jobSeekerExperienceDao.getTerminationYearAsc(id));
+	}
 }

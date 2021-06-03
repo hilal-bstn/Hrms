@@ -10,4 +10,6 @@ public interface JobSeekerExperienceService {
 	Result add(JobSeekerExperience jobSeekerExperience);
 	
 	DataResult<List<JobSeekerExperience>> getByJobSeekerId(int id);
+	
+	DataResult<List<JobSeekerExperience>> getTerminationYearAsc(int id);
 }

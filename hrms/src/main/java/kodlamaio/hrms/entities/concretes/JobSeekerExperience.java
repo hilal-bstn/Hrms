@@ -29,15 +29,15 @@ public class JobSeekerExperience {
 	private JobPosition jobPosition;
 	
 	@Column(name="employment_start_year")
-	private String employmentStartYear;
+	private int employmentStartYear;
 	
 	@Column(name="termination_year")
-	private String terminationYear;
+	private int terminationYear;
 
 	public JobSeekerExperience() {}
 
 	public JobSeekerExperience(int id, JobSeeker jobSeeker, String companyName, JobPosition jobPosition,
-			String employmentStartYear, String terminationYear) {
+			int employmentStartYear, int terminationYear) {
 		super();
 		this.id = id;
 		this.jobSeeker = jobSeeker;
@@ -79,22 +79,23 @@ public class JobSeekerExperience {
 		this.jobPosition = jobPosition;
 	}
 
-	public String getEmploymentStartYear() {
+	public int getEmploymentStartYear() {
 		return employmentStartYear;
 	}
 
-	public void setEmploymentStartYear(String employmentStartYear) {
+	public void setEmploymentStartYear(int employmentStartYear) {
 		this.employmentStartYear = employmentStartYear;
 	}
 
-	public String getTerminationYear() {
+	public int getTerminationYear() {
 		return terminationYear;
 	}
 
-	public void setTerminationYear(String terminationYear) {
+	public void setTerminationYear(int terminationYear) {
 		this.terminationYear = terminationYear;
 	}
 
+	
 	
 	
 	

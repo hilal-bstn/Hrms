@@ -1,6 +1,8 @@
 package kodlamaio.hrms.business.concretes;
 
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,14 +24,14 @@ public class LanguageManager implements LanguageService {
 		this.languageDao = languageDao;
 	}
 	@Override
-	public Result add(Language language) {
+	@Transactional
+	public DataResult<Language> add(Language language) {
 		if(checkLanguageName(language.getName().toLowerCase()).isSuccess())
 		{
 			language.setName(language.getName().toLowerCase());
 			this.languageDao.save(language);
-			return new SuccessResult();
 		}
-		return new ErrorResult();
+		return new SuccessDataResult<Language>(this.getByName(language.getName().toLowerCase()).getData(),"Kayıt başarılı");//id için
 	}
 	@Override
 	public DataResult<Language> getByName(String name) {

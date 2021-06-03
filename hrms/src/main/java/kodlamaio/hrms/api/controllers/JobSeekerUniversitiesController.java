@@ -32,4 +32,9 @@ public class JobSeekerUniversitiesController {
 	{
 		return this.jobSeekerUniversityService.getByJobSeekerId(id);
 	}
+	@GetMapping("/getgraduationyeardesc")
+	public DataResult<List<JobSeekerUniversity>> getGraduationYearDesc(int id)
+	{
+		return this.jobSeekerUniversityService.getGraduationYearDesc(id);
+	}
 }

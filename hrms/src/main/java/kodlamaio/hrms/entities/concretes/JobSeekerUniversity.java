@@ -32,15 +32,15 @@ public class JobSeekerUniversity {
 	private UniversityDepartment universityDepartment;
 	
 	@Column(name="entrance_date")
-	private String entranceYear;
+	private int entranceYear;
 	
 	@Column(name="graduation_date")
-	private String graduationYear;
+	private int graduationYear;
 
 	public JobSeekerUniversity() {}
 
 	public JobSeekerUniversity(int id, JobSeeker jobSeeker, University university,
-			UniversityDepartment universityDepartment, String entranceYear, String graduationYear) {
+			UniversityDepartment universityDepartment, int entranceYear, int graduationYear) {
 		super();
 		this.id = id;
 		this.jobSeeker = jobSeeker;
@@ -82,21 +82,23 @@ public class JobSeekerUniversity {
 		this.universityDepartment = universityDepartment;
 	}
 
-	public String getEntranceYear() {
+	public int getEntranceYear() {
 		return entranceYear;
 	}
 
-	public void setEntranceYear(String entranceYear) {
+	public void setEntranceYear(int entranceYear) {
 		this.entranceYear = entranceYear;
 	}
 
-	public String getGraduationYear() {
+	public int getGraduationYear() {
 		return graduationYear;
 	}
 
-	public void setGraduationYear(String graduationYear) {
+	public void setGraduationYear(int graduationYear) {
 		this.graduationYear = graduationYear;
 	}
+
+	
 
 	
 	

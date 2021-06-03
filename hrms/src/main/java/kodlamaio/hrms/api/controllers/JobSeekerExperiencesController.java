@@ -32,4 +32,9 @@ public class JobSeekerExperiencesController {
 	{
 		return this.jobSeekerExperienceService.getByJobSeekerId(id);
 	}
+	@GetMapping("/getterminationyearasc")
+	public DataResult<List<JobSeekerExperience>> getTerminationYearAsc(int id)
+	{
+		return this.jobSeekerExperienceService.getTerminationYearAsc(id);
+	}
 }

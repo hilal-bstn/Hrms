@@ -1,6 +1,8 @@
 package kodlamaio.hrms.business.concretes;
 
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,14 +24,14 @@ public class TechnologyManager implements TechnologyService{
 		this.technologyDao = technologyDao;
 	}
 	@Override
-	public Result add(Technology technology) {
+	@Transactional
+	public DataResult<Technology> add(Technology technology) {
 		if(checkTechnologyName(technology.getName().toLowerCase()).isSuccess()) 
 		{
 			technology.setName(technology.getName().toLowerCase());
 			this.technologyDao.save(technology);
-			return new SuccessResult("teknoloji kaydedildi.");
 		}
-		return new ErrorResult();
+		return new SuccessDataResult<Technology>(this.getByName(technology.getName().toLowerCase()).getData(),"kayıt başarılı");
 	}
 	@Override
 	public DataResult<Technology> getByName(String name) {
