@@ -9,8 +9,10 @@ import kodlamaio.hrms.entities.concretes.JobSeekerExperience;
 
 public interface JobSeekerExperienceDao extends JpaRepository<JobSeekerExperience,Integer> {
 	List<JobSeekerExperience> getByJobSeekerId(int id);
+
 	
 	@Query("From JobSeekerExperience where jobSeeker.id=:id Order By terminationYear Asc")
 	  List<JobSeekerExperience> getTerminationYearAsc(int id);
+
  
 }
