@@ -9,4 +9,6 @@ public interface JobSeekerDao extends JpaRepository<JobSeeker,Integer>{
 	
 	JobSeeker getByIdentityNumber(String identityNumber);
 	
+	JobSeeker getById(int id);
+	
 }
