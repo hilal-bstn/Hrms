@@ -1,4 +1,4 @@
-package kodlamaio.hrms.core.adepters;
+package kodlamaio.hrms.core.adepters.userVerification;
 
 public class MernisManagerAdapter implements UserVerificationService {
 

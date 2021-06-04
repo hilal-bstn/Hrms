@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="job_seekers")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobSeekerContact","jobSeekerCoverLetters","jobSeekerExperiences","jobSeekerLanguages","jobSeekerTechnologies","jobSeekerUniversities"})
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobSeekerContact","jobSeekerCoverLetters","jobSeekerExperiences","jobSeekerLanguages","jobSeekerTechnologies","jobSeekerUniversities","jobSeekerImage"})
 public class JobSeeker {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -57,6 +57,9 @@ public class JobSeeker {
 	
 	@OneToMany(mappedBy="jobSeeker")
 	private List<JobSeekerUniversity> jobSeekerUniversities;
+	
+	@OneToOne(mappedBy="jobSeeker")
+	private JobSeekerPhoto jobSeekerPhoto;
     
 	public JobSeeker() {}
 

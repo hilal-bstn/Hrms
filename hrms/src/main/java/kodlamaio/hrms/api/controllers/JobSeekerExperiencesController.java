@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import kodlamaio.hrms.business.abstracts.JobSeekerExperienceService;
@@ -23,17 +25,17 @@ public class JobSeekerExperiencesController {
 		this.jobSeekerExperienceService = jobSeekerExperienceService;
 	}
 	@PostMapping("/add")
-	public Result add(JobSeekerExperience jobSeekerExperience)
+	public Result add(@RequestBody JobSeekerExperience jobSeekerExperience)
 	{
 		return this.jobSeekerExperienceService.add(jobSeekerExperience);
 	}
 	@GetMapping("/getbyjobseekerid")
-	public DataResult<List<JobSeekerExperience>> getByJobSeekerId(int id)
+	public DataResult<List<JobSeekerExperience>> getByJobSeekerId(@RequestParam int id)
 	{
 		return this.jobSeekerExperienceService.getByJobSeekerId(id);
 	}
 	@GetMapping("/getterminationyearasc")
-	public DataResult<List<JobSeekerExperience>> getTerminationYearAsc(int id)
+	public DataResult<List<JobSeekerExperience>> getTerminationYearAsc(@RequestParam int id)
 	{
 		return this.jobSeekerExperienceService.getTerminationYearAsc(id);
 	}
