@@ -28,7 +28,6 @@ public class JobSeekerPhotoManager implements JobSeekerPhotoService {
 	public Result add(JobSeekerPhoto jobSeekerPhoto, MultipartFile file) {
 		Map<String,String> photo=(Map<String,String>) this.fileService.imageUpload(file).getData();
 		String url=photo.get("url");
-		System.out.println(url);
 		jobSeekerPhoto.setImageUrl(url);
 		this.jobSeekerPhotoDao.save(jobSeekerPhoto);
 		return new SuccessResult();
