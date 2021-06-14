@@ -8,22 +8,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import kodlamaio.hrms.business.abstracts.CityService;
+import kodlamaio.hrms.business.abstracts.TimeOfWorkService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
-import kodlamaio.hrms.entities.concretes.City;
+import kodlamaio.hrms.entities.concretes.TimeOfWork;
 
 @RestController
-@RequestMapping("/api/cities")
+@RequestMapping("/api/timesofwork")
 @CrossOrigin
-public class CitiesController {
-	private CityService cityService;
+public class TimesOfWorkController {
+	private TimeOfWorkService timeofWorkService;
 	@Autowired
-	public CitiesController(CityService cityService) {
+	public TimesOfWorkController(TimeOfWorkService timeofWorkService) {
 		super();
-		this.cityService = cityService;
+		this.timeofWorkService = timeofWorkService;
 	}
 	@GetMapping("/getall")
-	public DataResult<List<City>> getAll(){
-		return this.cityService.getAll();
+	public DataResult<List<TimeOfWork>> getAll()
+	{
+		return this.timeofWorkService.getAll();
 	}
 }

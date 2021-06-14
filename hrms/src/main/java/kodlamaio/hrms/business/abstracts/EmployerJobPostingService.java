@@ -11,11 +11,14 @@ public interface EmployerJobPostingService {
 	
 	Result add(EmployerJobPosting employerJobPosting);
 	
-	Result delete(int id);//pasif hale getirme
+	Result delete(int id);//ilanı yayından kaldırma
+	
+	Result IsActive(int id);//ilanı onay verildikten sonra yayına alma
 	
 	DataResult<List<EmployerJobPosting>> getByEmployerIdAndIsActive(int Id);
 	
 	DataResult<EmployerJobPosting> getById(int id);
 	
 	DataResult<List<EmployerJobPosting>> getByReleaseDateAndIsActiveSorted();
+	
 }

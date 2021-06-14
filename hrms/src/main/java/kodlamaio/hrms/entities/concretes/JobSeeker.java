@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="job_seekers")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobSeekerContact","jobSeekerCoverLetters","jobSeekerExperiences","jobSeekerLanguages","jobSeekerTechnologies","jobSeekerUniversities","jobSeekerImage"})
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobSeekerContact","jobSeekerCoverLetters","jobSeekerExperiences","jobSeekerLanguages","jobSeekerTechnologies","jobSeekerUniversities","jobSeekerPhoto"})
 public class JobSeeker {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -66,7 +66,8 @@ public class JobSeeker {
 	public JobSeeker(int id, User user, String firstName, String lastName, String identityNumber, String yearOfBirth,
 			JobSeekerContact jobSeekerContact, List<JobSeekerCoverLetter> jobSeekerCoverLetters,
 			List<JobSeekerExperience> jobSeekerExperiences, List<JobSeekerLanguage> jobSeekerLanguages,
-			List<JobSeekerTechnology> jobSeekerTechnologies, List<JobSeekerUniversity> jobSeekerUniversities) {
+			List<JobSeekerTechnology> jobSeekerTechnologies, List<JobSeekerUniversity> jobSeekerUniversities,
+			JobSeekerPhoto jobSeekerPhoto) {
 		super();
 		this.id = id;
 		this.user = user;
@@ -80,6 +81,7 @@ public class JobSeeker {
 		this.jobSeekerLanguages = jobSeekerLanguages;
 		this.jobSeekerTechnologies = jobSeekerTechnologies;
 		this.jobSeekerUniversities = jobSeekerUniversities;
+		this.jobSeekerPhoto = jobSeekerPhoto;
 	}
 
 	public int getId() {
@@ -177,6 +179,15 @@ public class JobSeeker {
 	public void setJobSeekerUniversities(List<JobSeekerUniversity> jobSeekerUniversities) {
 		this.jobSeekerUniversities = jobSeekerUniversities;
 	}
+
+	public JobSeekerPhoto getJobSeekerPhoto() {
+		return jobSeekerPhoto;
+	}
+
+	public void setJobSeekerPhoto(JobSeekerPhoto jobSeekerPhoto) {
+		this.jobSeekerPhoto = jobSeekerPhoto;
+	}
+
 	
 	
 	

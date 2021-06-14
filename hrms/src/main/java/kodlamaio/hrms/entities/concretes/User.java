@@ -39,16 +39,20 @@ public class User {
 	@OneToOne(mappedBy="user")
 	private Employer employer;
 	
+	@OneToOne(mappedBy="user")
+	private HrmsEmployee hrmsEmployee;
+	
 	public User() {}
 
 	public User(int id, @Email @NotBlank @NotNull String email, @NotBlank @NotNull String password, JobSeeker jobSeeker,
-			Employer employer) {
+			Employer employer,HrmsEmployee hrmsEmployee) {
 		super();
 		this.id = id;
 		this.email = email;
 		this.password = password;
 		this.jobSeeker = jobSeeker;
 		this.employer = employer;
+		this.hrmsEmployee=hrmsEmployee;
 	}
 
 	public int getId() {
@@ -89,6 +93,14 @@ public class User {
 
 	public void setEmployer(Employer employer) {
 		this.employer = employer;
+	}
+
+	public HrmsEmployee getHrmsEmployee() {
+		return hrmsEmployee;
+	}
+
+	public void setHrmsEmployee(HrmsEmployee hrmsEmployee) {
+		this.hrmsEmployee = hrmsEmployee;
 	}
 	
 	
