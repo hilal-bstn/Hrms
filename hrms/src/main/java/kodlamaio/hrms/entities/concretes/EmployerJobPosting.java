@@ -3,8 +3,10 @@ package kodlamaio.hrms.entities.concretes;
 
 import java.sql.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -69,7 +71,7 @@ public class EmployerJobPosting {
 	@JoinColumn(name="time_of_work_id")
 	private TimeOfWork timeOfWork;
 	
-	@OneToOne(mappedBy="employerJobPosting")
+	@OneToOne(fetch=FetchType.LAZY,cascade = CascadeType.ALL,mappedBy="employerJobPosting")
 	private JobPostingConfirmation jobPostingConfirmation;
 	
 	public EmployerJobPosting() {}

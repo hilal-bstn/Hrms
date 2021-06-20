@@ -20,5 +20,5 @@ public interface EmployerJobPostingService {
 	DataResult<EmployerJobPosting> getById(int id);
 	
 	DataResult<List<EmployerJobPosting>> getByReleaseDateAndIsActiveSorted();
-	
+
 }

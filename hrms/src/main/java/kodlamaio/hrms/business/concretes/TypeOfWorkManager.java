@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.TypeOfWorkService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
+import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
+import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.TypeOfWorkDao;
 import kodlamaio.hrms.entities.concretes.TypeOfWork;
 
@@ -22,5 +24,10 @@ public class TypeOfWorkManager implements TypeOfWorkService {
 	@Override
 	public DataResult<List<TypeOfWork>> getAll() {
 		return new SuccessDataResult<List<TypeOfWork>>(this.typeOfWorkDao.findAll());
+	}
+	@Override
+	public Result add(TypeOfWork typeOfWork) {
+		this.typeOfWorkDao.save(typeOfWork);
+		return new SuccessResult();
 	}
 }

@@ -19,4 +19,6 @@ public interface EmployerJobPostingDao extends JpaRepository<EmployerJobPosting,
 	  @Query("From EmployerJobPosting where isActive=true Order By releaseDate Desc")
 	  List<EmployerJobPosting> getByReleaseDateDesc();
 	  
+
+	  
 }   

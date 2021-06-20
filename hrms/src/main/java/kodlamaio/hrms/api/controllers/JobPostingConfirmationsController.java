@@ -34,4 +34,9 @@ public class JobPostingConfirmationsController {
 	{
 		return this.jobPostingConfirmationService.hrmsConfirmation(id);
 	}
+	@GetMapping("/getall")
+	public DataResult<List<JobPostingConfirmation>> getAll()
+	{
+		return this.jobPostingConfirmationService.getAll();
+	}
 }

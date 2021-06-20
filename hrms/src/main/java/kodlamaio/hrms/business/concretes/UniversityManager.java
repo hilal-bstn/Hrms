@@ -1,5 +1,7 @@
 package kodlamaio.hrms.business.concretes;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,6 +44,10 @@ public class UniversityManager implements UniversityService {
 			return new SuccessResult();
 		}
 		return new ErrorResult("üniversite listede mevcut");
+	}
+	@Override
+	public DataResult<List<University>> getAll() {
+		return new SuccessDataResult<List<University>>(this.universityDao.findAll());
 	}
 
 

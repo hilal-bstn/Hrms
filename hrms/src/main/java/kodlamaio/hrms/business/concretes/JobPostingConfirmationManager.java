@@ -55,6 +55,6 @@ public class JobPostingConfirmationManager implements JobPostingConfirmationServ
 	//hrms personelinin onay bekleyen iş ilanlarını görebilmesi
 	@Override
 	public DataResult<List<JobPostingConfirmation>> getByHrmsEmployeeConfirmation() {
-		return new SuccessDataResult<List<JobPostingConfirmation>>(this.jobPostingConfirmationDao.getByHrmsEmployeeConfirmation(false));
+		return new SuccessDataResult<List<JobPostingConfirmation>>(this.jobPostingConfirmationDao.getByHrmsEmployeeConfirmation());
 	}
 }

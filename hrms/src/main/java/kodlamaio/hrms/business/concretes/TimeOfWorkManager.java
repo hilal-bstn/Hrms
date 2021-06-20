@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.TimeOfWorkService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
+import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
+import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.TimeOfWorkDao;
 import kodlamaio.hrms.entities.concretes.TimeOfWork;
 
@@ -22,6 +24,11 @@ public class TimeOfWorkManager implements TimeOfWorkService {
 	@Override
 	public DataResult<List<TimeOfWork>> getAll() {
 		return new SuccessDataResult<List<TimeOfWork>>(this.timeOfWorkDao.findAll());
+	}
+	@Override
+	public Result add(TimeOfWork timeOfWork) {
+		this.timeOfWorkDao.save(timeOfWork);
+		return new SuccessResult();
 	}
 
 }

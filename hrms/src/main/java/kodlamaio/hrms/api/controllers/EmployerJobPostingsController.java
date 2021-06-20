@@ -54,6 +54,8 @@ public class EmployerJobPostingsController {
 	{
 		return this.employerJobPostingService.getById(id);
 	}
+
+	
 	@PostMapping("/isActive")
 	public Result IsActive(@RequestParam int id)
 	{

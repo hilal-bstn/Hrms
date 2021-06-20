@@ -40,7 +40,7 @@ public class EmployerJobPostingManager implements EmployerJobPostingService  {
 	@Transactional
 	public Result add(EmployerJobPosting employerJobPosting) 
 	{ 
-		employerJobPosting.setApplicationDeadline((Date.valueOf(employerJobPosting.getApplicationDeadline().toLocalDate())));//?
+		employerJobPosting.setApplicationDeadline((Date.valueOf(employerJobPosting.getApplicationDeadline().toLocalDate())));
 		employerJobPosting.setReleaseDate(Date.valueOf(LocalDate.now()));
 		employerJobPosting.setIsActive(false);//yayından kaldırılabilmesi için
 		EmployerJobPosting employerJobPostingSave=this.employerJobPostingDao.save(employerJobPosting);
@@ -80,6 +80,8 @@ public class EmployerJobPostingManager implements EmployerJobPostingService  {
 		this.employerJobPostingDao.save(employerJobPosting);
 		return new SuccessResult();
 	}
+
+	
 
 	
 
