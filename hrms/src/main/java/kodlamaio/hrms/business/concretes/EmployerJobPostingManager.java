@@ -49,7 +49,7 @@ public class EmployerJobPostingManager implements EmployerJobPostingService  {
 	}
 	
 	@Override
-	public Result delete(int id) //iş ilanını pasif hale getirme
+	public Result delete(int id) //iş ilanını pasif hale getirme(iş ilanının idsi)
 	{
 		EmployerJobPosting jobPosting=getById(id).getData();
 		jobPosting.setIsActive(false);
@@ -63,7 +63,7 @@ public class EmployerJobPostingManager implements EmployerJobPostingService  {
 	}
 
 	@Override
-	public DataResult<EmployerJobPosting> getById(int id) {
+	public DataResult<EmployerJobPosting> getById(int id) {//iş ilanını id si
 		return new SuccessDataResult<EmployerJobPosting>(this.employerJobPostingDao.getById(id));
 	}
 
@@ -83,6 +83,5 @@ public class EmployerJobPostingManager implements EmployerJobPostingService  {
 
 	
 
-	
 
 }

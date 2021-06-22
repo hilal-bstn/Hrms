@@ -61,4 +61,9 @@ public class EmployerJobPostingsController {
 	{
 		return this.employerJobPostingService.IsActive(id);
 	}
+	@GetMapping("/getByEmployerIdAndIsActive")
+	public DataResult<List<EmployerJobPosting>> getByEmployerIdAndIsActive(int employerId)
+	{
+		return this.employerJobPostingService.getByEmployerIdAndIsActive(employerId);
+	}
 }
