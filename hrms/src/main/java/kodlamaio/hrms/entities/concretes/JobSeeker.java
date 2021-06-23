@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="job_seekers")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobSeekerContact","jobSeekerCoverLetters","jobSeekerExperiences","jobSeekerLanguages","jobSeekerTechnologies","jobSeekerUniversities","jobSeekerPhoto"})
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobSeekerContact","jobSeekerCoverLetters","jobSeekerExperiences","jobSeekerLanguages","jobSeekerTechnologies","jobSeekerUniversities","jobSeekerPhoto","jobApplications"})
 public class JobSeeker {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -61,13 +61,16 @@ public class JobSeeker {
 	@OneToOne(mappedBy="jobSeeker")
 	private JobSeekerPhoto jobSeekerPhoto;
     
+	@OneToMany(mappedBy="jobSeeker")
+	private List<JobApplication> jobApplications;
+	
 	public JobSeeker() {}
 
 	public JobSeeker(int id, User user, String firstName, String lastName, String identityNumber, String yearOfBirth,
 			JobSeekerContact jobSeekerContact, List<JobSeekerCoverLetter> jobSeekerCoverLetters,
 			List<JobSeekerExperience> jobSeekerExperiences, List<JobSeekerLanguage> jobSeekerLanguages,
 			List<JobSeekerTechnology> jobSeekerTechnologies, List<JobSeekerUniversity> jobSeekerUniversities,
-			JobSeekerPhoto jobSeekerPhoto) {
+			JobSeekerPhoto jobSeekerPhoto,List<JobApplication> jobApplications) {
 		super();
 		this.id = id;
 		this.user = user;
@@ -82,6 +85,7 @@ public class JobSeeker {
 		this.jobSeekerTechnologies = jobSeekerTechnologies;
 		this.jobSeekerUniversities = jobSeekerUniversities;
 		this.jobSeekerPhoto = jobSeekerPhoto;
+		this.jobApplications=jobApplications;
 	}
 
 	public int getId() {
@@ -186,6 +190,14 @@ public class JobSeeker {
 
 	public void setJobSeekerPhoto(JobSeekerPhoto jobSeekerPhoto) {
 		this.jobSeekerPhoto = jobSeekerPhoto;
+	}
+
+	public List<JobApplication> getJobApplications() {
+		return jobApplications;
+	}
+
+	public void setJobApplications(List<JobApplication> jobApplications) {
+		this.jobApplications = jobApplications;
 	}
 
 	

@@ -56,10 +56,10 @@ public class EmployerJobPostingsController {
 	}
 
 	
-	@PostMapping("/isActive")
-	public Result IsActive(@RequestParam int id)
+	@PostMapping("/release")
+	public Result release(@RequestParam int id)
 	{
-		return this.employerJobPostingService.IsActive(id);
+		return this.employerJobPostingService.release(id);
 	}
 	@GetMapping("/getByEmployerIdAndIsActive")
 	public DataResult<List<EmployerJobPosting>> getByEmployerIdAndIsActive(int employerId)

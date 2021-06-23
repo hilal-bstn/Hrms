@@ -2,6 +2,7 @@ package kodlamaio.hrms.entities.concretes;
 
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -22,7 +24,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="employer_job_postings")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobPostingConfirmation"})
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobPostingConfirmation","jobApplications"})
 
 public class EmployerJobPosting {
 	@Id
@@ -74,12 +76,15 @@ public class EmployerJobPosting {
 	@OneToOne(fetch=FetchType.LAZY,cascade = CascadeType.ALL,mappedBy="employerJobPosting")
 	private JobPostingConfirmation jobPostingConfirmation;
 	
+	@OneToMany(mappedBy="employerJobPosting")
+	private List<JobApplication> jobApplications;
+	
 	public EmployerJobPosting() {}
 
 	public EmployerJobPosting(int id, Employer employer, JobPosition jobPosition, City city, String jobDescription,
 			double minSalary, double maxSalary, int openPositionCount, Date releaseDate, Date applicationDeadline,
 			Boolean isActive, TypeOfWork typeOfWork, TimeOfWork timeOfWork,
-			JobPostingConfirmation jobPostingConfirmation) {
+			JobPostingConfirmation jobPostingConfirmation,List<JobApplication> jobApplications) {
 		super();
 		this.id = id;
 		this.employer = employer;
@@ -95,6 +100,7 @@ public class EmployerJobPosting {
 		this.typeOfWork = typeOfWork;
 		this.timeOfWork = timeOfWork;
 		this.jobPostingConfirmation = jobPostingConfirmation;
+		this.jobApplications=jobApplications;
 	}
 
 	public int getId() {
@@ -207,6 +213,14 @@ public class EmployerJobPosting {
 
 	public void setJobPostingConfirmation(JobPostingConfirmation jobPostingConfirmation) {
 		this.jobPostingConfirmation = jobPostingConfirmation;
+	}
+
+	public List<JobApplication> getJobApplications() {
+		return jobApplications;
+	}
+
+	public void setJobApplications(List<JobApplication> jobApplications) {
+		this.jobApplications = jobApplications;
 	}
 
 	

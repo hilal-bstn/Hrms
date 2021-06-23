@@ -49,7 +49,7 @@ public class EmployerJobPostingManager implements EmployerJobPostingService  {
 	}
 	
 	@Override
-	public Result delete(int id) //iş ilanını pasif hale getirme(iş ilanının idsi)
+	public Result delete(int id) //iş ilanını pasif hale getirme
 	{
 		EmployerJobPosting jobPosting=getById(id).getData();
 		jobPosting.setIsActive(false);
@@ -57,13 +57,13 @@ public class EmployerJobPostingManager implements EmployerJobPostingService  {
 		return new SuccessResult("İlan yayından kaldırılmıştır.");
 	}
 	@Override
-	public DataResult<List<EmployerJobPosting>> getByEmployerIdAndIsActive(int Id)//işveren id ye göre tüm aktif iş ilanları 
+	public DataResult<List<EmployerJobPosting>> getByEmployerIdAndIsActive(int employerId)//işveren id ye göre tüm aktif iş ilanları 
 	{
-		return new SuccessDataResult<List<EmployerJobPosting>>(this.employerJobPostingDao.getByEmployerIdAndIsActive(Id, true));
+		return new SuccessDataResult<List<EmployerJobPosting>>(this.employerJobPostingDao.getByEmployerIdAndIsActive(employerId, true));
 	}
 
 	@Override
-	public DataResult<EmployerJobPosting> getById(int id) {//iş ilanını id si
+	public DataResult<EmployerJobPosting> getById(int id) {//iş ilanı detayları
 		return new SuccessDataResult<EmployerJobPosting>(this.employerJobPostingDao.getById(id));
 	}
 
@@ -74,13 +74,16 @@ public class EmployerJobPostingManager implements EmployerJobPostingService  {
 	}
 
 	@Override
-	public Result IsActive(int id) {
+	public Result release(int id) {
 		EmployerJobPosting employerJobPosting=this.getById(id).getData();
 		employerJobPosting.setIsActive(true);//yayına alındı(onay verildikten sonra)(frontend)
 		this.employerJobPostingDao.save(employerJobPosting);
 		return new SuccessResult();
 	}
-
+//Aktif iş ilanıları listesi=> EmployerJobPosting=>isActive=True
+//Onay bekleyen ilanrın listesi=>  EmployerJobPosting=>isActive=false and JobPostingConfirmation=>hrmsConfirmation=false
+//Yayından kaldırılan ilanların listesi=> EmployerJobPosting=>isActive=false and JobPostingConfirmation=>hrmsConfirmation=true
+//Hrms personeli tarafından onaylanmayan ilanların listesi=> EmployerJobPosting=>isActive=false and JobPostingConfirmation=>hrmsConfirmation=null(delete)(?)
 	
 
 

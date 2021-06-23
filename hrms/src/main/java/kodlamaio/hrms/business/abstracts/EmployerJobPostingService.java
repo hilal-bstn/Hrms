@@ -13,7 +13,7 @@ public interface EmployerJobPostingService {
 	
 	Result delete(int id);//ilanı yayından kaldırma
 	
-	Result IsActive(int id);//ilanı onay verildikten sonra yayına alma
+	Result release(int id);//ilanı onay verildikten sonra yayına alma
 	
 	DataResult<List<EmployerJobPosting>> getByEmployerIdAndIsActive(int Id);
 	
