@@ -11,6 +11,7 @@ import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.JobSeekerCoverLetterDao;
+import kodlamaio.hrms.entities.concretes.JobSeekerContact;
 import kodlamaio.hrms.entities.concretes.JobSeekerCoverLetter;
 
 @Service
@@ -29,5 +30,16 @@ public class JobSeekerCoverLetterManager implements JobSeekerCoverLetterService{
 	@Override
 	public DataResult<List<JobSeekerCoverLetter>> getByJobSeekerId(int id) {
 		return new SuccessDataResult<List<JobSeekerCoverLetter>>(this.jobSeekerCoverLetterDao.getByJobSeekerId(id));
+	}
+	@Override
+	public Result update(JobSeekerCoverLetter jobSeekerCoverLetter) {
+		JobSeekerCoverLetter jobSeekerCoverLetterUpdate=this.getById(jobSeekerCoverLetter.getId()).getData();
+		jobSeekerCoverLetterUpdate=jobSeekerCoverLetter;
+		this.jobSeekerCoverLetterDao.save(jobSeekerCoverLetterUpdate);
+		return new SuccessResult("Güncellendi.");
+	}
+	@Override
+	public DataResult<JobSeekerCoverLetter> getById(int id) {
+		return new SuccessDataResult<JobSeekerCoverLetter>(this.jobSeekerCoverLetterDao.getById(id));
 	}
 }

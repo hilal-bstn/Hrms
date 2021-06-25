@@ -36,4 +36,9 @@ public class JobSeekerContactController {
 	{
 		return this.jobSeekerContactService.getByJobSeekerId(id);
 	}
+	@PostMapping("/update")
+	public Result update(@RequestBody JobSeekerContact jobSeekerContact)
+	{
+		return this.jobSeekerContactService.update(jobSeekerContact);
+	}
 }

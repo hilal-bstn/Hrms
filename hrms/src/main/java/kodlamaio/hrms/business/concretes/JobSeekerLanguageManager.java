@@ -33,10 +33,21 @@ public class JobSeekerLanguageManager implements JobSeekerLanguageService{
 		Language language=this.languageService.add(jobSeekerLanguage.getLanguage()).getData();
 		jobSeekerLanguage.setLanguage(language);
 		this.jobSeekerLanguageDao.save(jobSeekerLanguage);
-		return new SuccessResult();
+		return new SuccessResult("Eklendi.");
 	}
 	@Override
 	public DataResult<List<JobSeekerLanguage>> getByJobSeekerId(int id) {
 		return new SuccessDataResult<List<JobSeekerLanguage>>(this.jobSeekerLanguageDao.getByJobSeekerId(id));
+	}
+	@Override
+	public Result update(JobSeekerLanguage jobSeekerLanguage) {
+		JobSeekerLanguage jobSeekerLanguageUpdate=this.getById(jobSeekerLanguage.getId()).getData();
+		jobSeekerLanguageUpdate=jobSeekerLanguage;
+		this.jobSeekerLanguageDao.save(jobSeekerLanguageUpdate);
+		return new SuccessResult("Güncellendi.");
+	}
+	@Override
+	public DataResult<JobSeekerLanguage> getById(int id) {
+		return new SuccessDataResult<JobSeekerLanguage>(this.jobSeekerLanguageDao.getById(id));
 	}
 }

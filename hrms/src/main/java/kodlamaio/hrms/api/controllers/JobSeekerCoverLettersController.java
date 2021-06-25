@@ -36,4 +36,9 @@ public class JobSeekerCoverLettersController {
 	{
 		return this.jobSeekerCoverLetterService.getByJobSeekerId(id);
 	}
+	@PostMapping("/update")
+	public Result update(@RequestBody JobSeekerCoverLetter jobSeekerCoverLetter)
+	{
+		return this.jobSeekerCoverLetterService.update(jobSeekerCoverLetter);
+	}
 }

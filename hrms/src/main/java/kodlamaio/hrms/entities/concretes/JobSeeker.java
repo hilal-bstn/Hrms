@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="job_seekers")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobSeekerContact","jobSeekerCoverLetters","jobSeekerExperiences","jobSeekerLanguages","jobSeekerTechnologies","jobSeekerUniversities","jobSeekerPhoto","jobApplications"})
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobSeekerContact","jobSeekerCoverLetters","jobSeekerExperiences","jobSeekerLanguages","jobSeekerTechnologies","jobSeekerUniversities","jobSeekerPhoto","jobApplications","favoriteJobPostingsOfJobSeeker"})
 public class JobSeeker {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -64,13 +64,16 @@ public class JobSeeker {
 	@OneToMany(mappedBy="jobSeeker")
 	private List<JobApplication> jobApplications;
 	
+	@OneToMany(mappedBy="employerJobPosting")
+	private List<FavoriteJobPostingOfJobSeeker> favoriteJobPostingsOfJobSeeker;
+	
 	public JobSeeker() {}
 
 	public JobSeeker(int id, User user, String firstName, String lastName, String identityNumber, String yearOfBirth,
 			JobSeekerContact jobSeekerContact, List<JobSeekerCoverLetter> jobSeekerCoverLetters,
 			List<JobSeekerExperience> jobSeekerExperiences, List<JobSeekerLanguage> jobSeekerLanguages,
 			List<JobSeekerTechnology> jobSeekerTechnologies, List<JobSeekerUniversity> jobSeekerUniversities,
-			JobSeekerPhoto jobSeekerPhoto,List<JobApplication> jobApplications) {
+			JobSeekerPhoto jobSeekerPhoto,List<JobApplication> jobApplications,List<FavoriteJobPostingOfJobSeeker> favoriteJobPostingsOfJobSeeker) {
 		super();
 		this.id = id;
 		this.user = user;
@@ -86,6 +89,7 @@ public class JobSeeker {
 		this.jobSeekerUniversities = jobSeekerUniversities;
 		this.jobSeekerPhoto = jobSeekerPhoto;
 		this.jobApplications=jobApplications;
+		this.favoriteJobPostingsOfJobSeeker=favoriteJobPostingsOfJobSeeker;
 	}
 
 	public int getId() {
@@ -199,6 +203,16 @@ public class JobSeeker {
 	public void setJobApplications(List<JobApplication> jobApplications) {
 		this.jobApplications = jobApplications;
 	}
+
+	public List<FavoriteJobPostingOfJobSeeker> getFavoriteJobPostingsOfJobSeeker() {
+		return favoriteJobPostingsOfJobSeeker;
+	}
+
+	public void setFavoriteJobPostingsOfJobSeeker(List<FavoriteJobPostingOfJobSeeker> favoriteJobPostingsOfJobSeeker) {
+		this.favoriteJobPostingsOfJobSeeker = favoriteJobPostingsOfJobSeeker;
+	}
+
+	
 
 	
 	

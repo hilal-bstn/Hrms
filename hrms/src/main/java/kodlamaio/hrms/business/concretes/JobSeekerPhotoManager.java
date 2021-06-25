@@ -9,7 +9,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import kodlamaio.hrms.business.abstracts.JobSeekerPhotoService;
 import kodlamaio.hrms.core.adepters.fileHelper.FileService;
+import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
+import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.JobSeekerPhotoDao;
 import kodlamaio.hrms.entities.concretes.JobSeekerPhoto;
@@ -31,6 +33,10 @@ public class JobSeekerPhotoManager implements JobSeekerPhotoService {
 		jobSeekerPhoto.setImageUrl(url);
 		this.jobSeekerPhotoDao.save(jobSeekerPhoto);
 		return new SuccessResult();
+	}
+	@Override
+	public DataResult<JobSeekerPhoto> getByJobSeekerId(int jobSeekerId) {
+		return new SuccessDataResult<JobSeekerPhoto>(this.jobSeekerPhotoDao.getByJobSeekerId(jobSeekerId));
 	}
 	
 }

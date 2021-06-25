@@ -41,4 +41,9 @@ public class JobSeekerExperiencesController {
 	{
 		return this.jobSeekerExperienceService.getTerminationYearAsc(id);
 	}
+	@PostMapping("/update")
+	public Result update(@RequestBody JobSeekerExperience jobSeekerExperience)
+	{
+		return this.jobSeekerExperienceService.update(jobSeekerExperience);
+	}
 }

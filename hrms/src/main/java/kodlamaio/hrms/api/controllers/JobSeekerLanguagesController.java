@@ -37,4 +37,9 @@ public class JobSeekerLanguagesController {
 	{
 		return this.jobSeekerLanguageService.getByJobSeekerId(id);
 	}
+	@PostMapping("/update")
+	public Result update(@RequestBody JobSeekerLanguage jobSeekerLanguage)
+	{
+		return this.jobSeekerLanguageService.update(jobSeekerLanguage);
+	}
 }

@@ -10,5 +10,9 @@ public interface JobSeekerCoverLetterService {
 	
 	Result add(JobSeekerCoverLetter jobSeekerCoverLetter);
 	
+	Result update(JobSeekerCoverLetter jobSeekerCoverLetter);
+	
 	DataResult<List<JobSeekerCoverLetter>> getByJobSeekerId(int id);
+	
+	DataResult<JobSeekerCoverLetter> getById(int id);
 }

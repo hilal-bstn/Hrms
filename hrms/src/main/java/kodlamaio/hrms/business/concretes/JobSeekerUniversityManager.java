@@ -43,4 +43,15 @@ public class JobSeekerUniversityManager implements JobSeekerUniversityService {
 	public DataResult<List<JobSeekerUniversity>> getGraduationYearDesc(int id) {
 		return new SuccessDataResult<List<JobSeekerUniversity>>(this.jobSeekerUniversityDao.getGraduationYearAsc(id));
 	}
+	@Override
+	public Result update(JobSeekerUniversity jobSeekerUniversity) {
+		JobSeekerUniversity jobSeekerUniversityUpdate=this.getById(jobSeekerUniversity.getId()).getData();
+		jobSeekerUniversityUpdate=jobSeekerUniversity;
+		this.add(jobSeekerUniversityUpdate);
+		return new SuccessResult("Güncellendi.");
+	}
+	@Override
+	public DataResult<JobSeekerUniversity> getById(int id) {
+		return new SuccessDataResult<JobSeekerUniversity>(this.jobSeekerUniversityDao.getById(id));
+	}
 }

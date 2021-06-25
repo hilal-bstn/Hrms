@@ -41,4 +41,9 @@ public class JobSeekerUniversitiesController {
 	{
 		return this.jobSeekerUniversityService.getGraduationYearDesc(id);
 	}
+	@PostMapping("/update")
+	public Result update(@RequestBody JobSeekerUniversity jobSeekerUniversity)
+	{
+		return this.jobSeekerUniversityService.update(jobSeekerUniversity);
+	}
 }

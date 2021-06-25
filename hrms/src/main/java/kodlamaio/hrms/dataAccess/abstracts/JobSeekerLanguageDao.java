@@ -9,4 +9,5 @@ import kodlamaio.hrms.entities.concretes.JobSeekerLanguage;
 public interface JobSeekerLanguageDao extends JpaRepository<JobSeekerLanguage,Integer>{
 	List<JobSeekerLanguage> getByJobSeekerId(int id);
 
+	JobSeekerLanguage getById(int id);
 }

@@ -8,7 +8,8 @@ import kodlamaio.hrms.entities.concretes.JobSeekerTechnology;
 
 public interface JobSeekerTechnologyService {
 	Result add(JobSeekerTechnology jobSeekerTechnology);
-	
+		
 	DataResult<List<JobSeekerTechnology>> getByJobSeekerId(int id);
+	
 
 }

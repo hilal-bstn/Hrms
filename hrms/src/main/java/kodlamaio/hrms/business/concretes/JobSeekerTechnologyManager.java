@@ -33,10 +33,11 @@ public class JobSeekerTechnologyManager implements JobSeekerTechnologyService{
 		Technology technology=this.technologyService.add(jobSeekerTechnology.getTechnology()).getData();
 		jobSeekerTechnology.setTechnology(technology);
 		this.jobSeekerTechnologyDao.save(jobSeekerTechnology);
-		return new SuccessResult();
+		return new SuccessResult("Eklendi.");
 	}
 	@Override
 	public DataResult<List<JobSeekerTechnology>> getByJobSeekerId(int id) {
 		return new SuccessDataResult<List<JobSeekerTechnology>>(this.jobSeekerTechnologyDao.getByJobSeekerId(id));
 	}
+	
 }

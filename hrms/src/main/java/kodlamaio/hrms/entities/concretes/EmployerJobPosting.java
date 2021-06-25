@@ -24,7 +24,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="employer_job_postings")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobPostingConfirmation","jobApplications"})
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobPostingConfirmation","jobApplications","favoriteJobPostingsOfJobSeeker"})
 
 public class EmployerJobPosting {
 	@Id
@@ -79,12 +79,15 @@ public class EmployerJobPosting {
 	@OneToMany(mappedBy="employerJobPosting")
 	private List<JobApplication> jobApplications;
 	
+	@OneToMany(mappedBy="employerJobPosting")
+	private List<FavoriteJobPostingOfJobSeeker> favoriteJobPostingsOfJobSeeker;
+	
 	public EmployerJobPosting() {}
 
 	public EmployerJobPosting(int id, Employer employer, JobPosition jobPosition, City city, String jobDescription,
 			double minSalary, double maxSalary, int openPositionCount, Date releaseDate, Date applicationDeadline,
 			Boolean isActive, TypeOfWork typeOfWork, TimeOfWork timeOfWork,
-			JobPostingConfirmation jobPostingConfirmation,List<JobApplication> jobApplications) {
+			JobPostingConfirmation jobPostingConfirmation,List<JobApplication> jobApplications,List<FavoriteJobPostingOfJobSeeker> favoriteJobPostingsOfJobSeeker) {
 		super();
 		this.id = id;
 		this.employer = employer;
@@ -101,6 +104,7 @@ public class EmployerJobPosting {
 		this.timeOfWork = timeOfWork;
 		this.jobPostingConfirmation = jobPostingConfirmation;
 		this.jobApplications=jobApplications;
+		this.favoriteJobPostingsOfJobSeeker=favoriteJobPostingsOfJobSeeker;
 	}
 
 	public int getId() {
@@ -222,6 +226,16 @@ public class EmployerJobPosting {
 	public void setJobApplications(List<JobApplication> jobApplications) {
 		this.jobApplications = jobApplications;
 	}
+
+	public List<FavoriteJobPostingOfJobSeeker> getFavoriteJobPostingsOfJobSeeker() {
+		return favoriteJobPostingsOfJobSeeker;
+	}
+
+	public void setFavoriteJobPostingsOfJobSeeker(List<FavoriteJobPostingOfJobSeeker> favoriteJobPostingsOfJobSeeker) {
+		this.favoriteJobPostingsOfJobSeeker = favoriteJobPostingsOfJobSeeker;
+	}
+
+	
 
 	
 

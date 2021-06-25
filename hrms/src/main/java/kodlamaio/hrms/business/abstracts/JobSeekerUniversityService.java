@@ -9,7 +9,11 @@ import kodlamaio.hrms.entities.concretes.JobSeekerUniversity;
 public interface JobSeekerUniversityService {
 	Result add(JobSeekerUniversity jobSeekerUniversity);
 	
+	Result update(JobSeekerUniversity jobSeekerUniversity);
+	
 	DataResult<List<JobSeekerUniversity>> getByJobSeekerId(int id);
+	
+	DataResult<JobSeekerUniversity> getById(int id);
 	
 	DataResult<List<JobSeekerUniversity>> getGraduationYearDesc(int id);
 

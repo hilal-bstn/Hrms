@@ -8,4 +8,5 @@ import kodlamaio.hrms.entities.concretes.JobSeekerCoverLetter;
 
 public interface JobSeekerCoverLetterDao extends JpaRepository<JobSeekerCoverLetter,Integer>{
 	List<JobSeekerCoverLetter> getByJobSeekerId(int id);
+	JobSeekerCoverLetter getById(int id);
 }

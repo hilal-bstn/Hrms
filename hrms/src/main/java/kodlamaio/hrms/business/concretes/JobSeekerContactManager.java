@@ -28,4 +28,15 @@ public class JobSeekerContactManager implements JobSeekerContactService{
 	public DataResult<JobSeekerContact> getByJobSeekerId(int id) {
 		return new SuccessDataResult<JobSeekerContact>(this.jobSeekerContactDao.getByJobSeekerId(id));
 	}
+	@Override
+	public Result update(JobSeekerContact jobSeekerContact) {
+	    JobSeekerContact jobSeekerContactUpdate=this.getById(jobSeekerContact.getId()).getData();
+	    jobSeekerContactUpdate=jobSeekerContact;
+	    this.jobSeekerContactDao.save(jobSeekerContactUpdate);
+		return null;
+	}
+	@Override
+	public DataResult<JobSeekerContact> getById(int id) {
+		return new SuccessDataResult<JobSeekerContact>(this.jobSeekerContactDao.getById(id));
+	}
 }
