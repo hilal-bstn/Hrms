@@ -1,6 +1,8 @@
 package kodlamaio.hrms.business.concretes;
 
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +47,10 @@ public class LanguageManager implements LanguageService {
 			return new SuccessResult();
 		}
 		return new ErrorResult();
+	}
+	@Override
+	public DataResult<List<Language>> getAll() {
+		return new SuccessDataResult<List<Language>>(this.languageDao.findAll());
 	}
 
 }

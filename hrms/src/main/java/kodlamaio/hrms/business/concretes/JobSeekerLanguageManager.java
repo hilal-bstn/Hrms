@@ -20,18 +20,13 @@ import kodlamaio.hrms.entities.concretes.Language;
 @Service
 public class JobSeekerLanguageManager implements JobSeekerLanguageService{
 	private JobSeekerLanguageDao jobSeekerLanguageDao;
-	private LanguageService languageService;
 	@Autowired
-	public JobSeekerLanguageManager(JobSeekerLanguageDao jobSeekerLanguageDao,LanguageService languageService) {
+	public JobSeekerLanguageManager(JobSeekerLanguageDao jobSeekerLanguageDao) {
 		super();
 		this.jobSeekerLanguageDao = jobSeekerLanguageDao;
-		this.languageService=languageService;
 	}
 	@Override
-	@Transactional
 	public Result add(JobSeekerLanguage jobSeekerLanguage) {
-		Language language=this.languageService.add(jobSeekerLanguage.getLanguage()).getData();
-		jobSeekerLanguage.setLanguage(language);
 		this.jobSeekerLanguageDao.save(jobSeekerLanguage);
 		return new SuccessResult("Eklendi.");
 	}

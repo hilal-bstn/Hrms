@@ -1,6 +1,8 @@
 package kodlamaio.hrms.business.concretes;
 
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +47,10 @@ public class TechnologyManager implements TechnologyService{
 			return new SuccessResult();
 		}
 		return new ErrorResult("Listede mevcut");
+	}
+	@Override
+	public DataResult<List<Technology>> getAll() {
+		return new SuccessDataResult<List<Technology>>(this.technologyDao.findAll());
 	}
 	
 }

@@ -1,6 +1,8 @@
 package kodlamaio.hrms.business.concretes;
 
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +49,10 @@ public class UniversityDepartmentManager implements UniversityDepartmentService 
 			return new SuccessResult();
 		}
 		return new ErrorResult("Bu bölüm listede mevcut");
+	}
+	@Override
+	public DataResult<List<UniversityDepartment>> getAll() {
+		return new SuccessDataResult<List<UniversityDepartment>>(this.universityDepartmentDao.findAll());
 	}
 	
 	
