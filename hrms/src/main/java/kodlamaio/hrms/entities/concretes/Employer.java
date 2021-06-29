@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="employers")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","employerJobPostings"})
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","employerJobPostings","employerUpdateConfirmation"})
 public class Employer {
 
 	@Id
@@ -35,7 +35,8 @@ public class Employer {
 	@OneToMany(mappedBy="employer")
 	private List<EmployerJobPosting> employerJobPostings;
 	
-	
+
+
 	public Employer() {}
 
 
@@ -86,6 +87,9 @@ public class Employer {
 	public void setEmployerJobPostings(List<EmployerJobPosting> employerJobPostings) {
 		this.employerJobPostings = employerJobPostings;
 	}
+
+
+	
 	
 	
 	

@@ -11,7 +11,6 @@ import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.JobSeekerCoverLetterDao;
-import kodlamaio.hrms.entities.concretes.JobSeekerContact;
 import kodlamaio.hrms.entities.concretes.JobSeekerCoverLetter;
 
 @Service

@@ -11,5 +11,9 @@ public interface CompanyService {
 	DataResult<List<Company>> getAll();
 
 	Result add(Company company);
+	
+	Result update(Company company);
+	
+	DataResult<Company> getById(int id);
 
 }

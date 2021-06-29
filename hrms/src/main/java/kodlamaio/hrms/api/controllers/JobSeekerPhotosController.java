@@ -27,6 +27,7 @@ public class JobSeekerPhotosController {
 		this.jobSeekerPhotoService = jobSeekerPhotoService;
 	}
 	@PostMapping("/add")
+	@CrossOrigin
 	public Result add(@RequestParam int id,@RequestParam MultipartFile file)
 	{
 		JobSeekerPhoto jobSeekerPhoto = new JobSeekerPhoto();

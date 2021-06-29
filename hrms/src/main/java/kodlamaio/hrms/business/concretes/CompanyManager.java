@@ -35,4 +35,17 @@ public class CompanyManager implements CompanyService {
 		return new SuccessResult("Şirket kaydedildi.");
 	}
 
+	@Override
+	public Result update(Company company) {
+		Company companyUpdate=this.getById(company.getId()).getData();
+		companyUpdate=company;
+		this.companyDao.save(companyUpdate);
+		return new SuccessResult();
+	}
+
+	@Override
+	public DataResult<Company> getById(int id) {
+		return new SuccessDataResult<Company>(this.companyDao.getById(id));
+	}
+
 }

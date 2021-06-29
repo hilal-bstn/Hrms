@@ -41,4 +41,9 @@ public class JobSeekerCoverLettersController {
 	{
 		return this.jobSeekerCoverLetterService.update(jobSeekerCoverLetter);
 	}
+	@GetMapping("/getbyid")
+	public DataResult<JobSeekerCoverLetter> getById(@RequestParam int id)
+	{
+		return this.jobSeekerCoverLetterService.getById(id);
+	}
 }

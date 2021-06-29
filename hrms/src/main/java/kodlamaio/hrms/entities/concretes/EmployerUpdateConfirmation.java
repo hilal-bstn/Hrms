@@ -1,26 +1,26 @@
 package kodlamaio.hrms.entities.concretes;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-
 @Entity
-@Table(name="companies")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","employer","employerUpdateConfirmation"})
-public class Company {
+@Table(name="employer_update_confirmations")
+public class EmployerUpdateConfirmation {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="company_id")
+	@Column(name="employer_id")
 	private int id;
-
+    //onay verildikten sonra silinir.Güncelleme onay beklerken yeni güncelleme yapılamaz.
+	@OneToOne()
+	@JoinColumn(name="company_id")
+	private Company company;
+	
 	@Column(name="company_name")
 	private String companyName;
 	
@@ -30,22 +30,20 @@ public class Company {
 	@Column(name="phone")
 	private String phone;
 	
-	@OneToOne(mappedBy="company")
-	private Employer employer;
+	@Column(name="is_active")
+	private Boolean isActive;
 	
-	@OneToOne(mappedBy="company")
-	private EmployerUpdateConfirmation employerUpdateConfirmation;
-	
-	public Company() {}
+	public EmployerUpdateConfirmation() {}
 
-	public Company(int id, String companyName, String website, String phone, Employer employer,EmployerUpdateConfirmation employerUpdateConfirmation) {
+	public EmployerUpdateConfirmation(int id, Company company, String companyName, String website, String phone,
+			Boolean isActive) {
 		super();
 		this.id = id;
+		this.company = company;
 		this.companyName = companyName;
 		this.website = website;
 		this.phone = phone;
-		this.employer = employer;
-		this.employerUpdateConfirmation=employerUpdateConfirmation;
+		this.isActive = isActive;
 	}
 
 	public int getId() {
@@ -54,6 +52,14 @@ public class Company {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public Company getCompany() {
+		return company;
+	}
+
+	public void setCompany(Company company) {
+		this.company = company;
 	}
 
 	public String getCompanyName() {
@@ -80,19 +86,12 @@ public class Company {
 		this.phone = phone;
 	}
 
-	public Employer getEmployer() {
-		return employer;
+	public Boolean getIsActive() {
+		return isActive;
 	}
 
-	public void setEmployer(Employer employer) {
-		this.employer = employer;
-	}
-	public EmployerUpdateConfirmation getEmployerUpdateConfirmation() {
-		return employerUpdateConfirmation;
-	}
-
-	public void setEmployerUpdateConfirmation(EmployerUpdateConfirmation employerUpdateConfirmation) {
-		this.employerUpdateConfirmation = employerUpdateConfirmation;
+	public void setIsActive(Boolean isActive) {
+		this.isActive = isActive;
 	}
 
 	

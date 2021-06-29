@@ -41,7 +41,7 @@ public class JobSeekerUniversityManager implements JobSeekerUniversityService {
 	public Result update(JobSeekerUniversity jobSeekerUniversity) {
 		JobSeekerUniversity jobSeekerUniversityUpdate=this.getById(jobSeekerUniversity.getId()).getData();
 		jobSeekerUniversityUpdate=jobSeekerUniversity;
-		this.add(jobSeekerUniversityUpdate);
+		this.jobSeekerUniversityDao.save(jobSeekerUniversityUpdate);
 		return new SuccessResult("Güncellendi.");
 	}
 	@Override

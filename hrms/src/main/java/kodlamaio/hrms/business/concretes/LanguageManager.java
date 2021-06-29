@@ -33,7 +33,7 @@ public class LanguageManager implements LanguageService {
 			language.setName(language.getName().toLowerCase());
 			this.languageDao.save(language);
 		}
-		return new SuccessDataResult<Language>(this.getByName(language.getName().toLowerCase()).getData(),"Kayıt başarılı");//id için
+		return new SuccessDataResult<Language>(this.getByName(language.getName().toLowerCase()).getData(),"Kayıt başarılı");
 	}
 	@Override
 	public DataResult<Language> getByName(String name) {

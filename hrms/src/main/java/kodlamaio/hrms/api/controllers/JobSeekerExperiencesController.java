@@ -46,4 +46,9 @@ public class JobSeekerExperiencesController {
 	{
 		return this.jobSeekerExperienceService.update(jobSeekerExperience);
 	}
+	@GetMapping("/getbyid")
+	public DataResult<JobSeekerExperience> getById(@RequestParam int id)
+	{
+		return this.jobSeekerExperienceService.getById(id);
+	}
 }

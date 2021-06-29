@@ -33,7 +33,8 @@ public class EmployersController {
 	@PostMapping("/add")
 	public Result add(@RequestBody Employer employer) {
 		return this.employerService.add(employer);
-	}@GetMapping("/getById")
+	}
+	@GetMapping("/getById")
 	public DataResult<Employer> getById(@RequestParam int id){
 		return this.employerService.getById(id);
 	}
