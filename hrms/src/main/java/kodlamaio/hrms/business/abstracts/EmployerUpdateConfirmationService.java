@@ -16,4 +16,7 @@ public interface EmployerUpdateConfirmationService{
 	DataResult<EmployerUpdateConfirmation> getById(int id);
 	
 	Result updateFailed(int id);
+	
+	DataResult<List<EmployerUpdateConfirmation>> getByIsActive();
+
 }

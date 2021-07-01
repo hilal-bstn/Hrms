@@ -1,11 +1,14 @@
 package kodlamaio.hrms.entities.concretes;
 
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -14,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="companies")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","employer","employerUpdateConfirmation"})
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","employer","employerUpdateConfirmations"})
 public class Company {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -33,19 +36,20 @@ public class Company {
 	@OneToOne(mappedBy="company")
 	private Employer employer;
 	
-	@OneToOne(mappedBy="company")
-	private EmployerUpdateConfirmation employerUpdateConfirmation;
+	@OneToMany(mappedBy="company")
+	private List<EmployerUpdateConfirmation> employerUpdateConfirmations;
 	
 	public Company() {}
 
-	public Company(int id, String companyName, String website, String phone, Employer employer,EmployerUpdateConfirmation employerUpdateConfirmation) {
+	public Company(int id, String companyName, String website, String phone, Employer employer,
+			List<EmployerUpdateConfirmation> employerUpdateConfirmations) {
 		super();
 		this.id = id;
 		this.companyName = companyName;
 		this.website = website;
 		this.phone = phone;
 		this.employer = employer;
-		this.employerUpdateConfirmation=employerUpdateConfirmation;
+		this.employerUpdateConfirmations = employerUpdateConfirmations;
 	}
 
 	public int getId() {
@@ -87,13 +91,16 @@ public class Company {
 	public void setEmployer(Employer employer) {
 		this.employer = employer;
 	}
-	public EmployerUpdateConfirmation getEmployerUpdateConfirmation() {
-		return employerUpdateConfirmation;
+
+	public List<EmployerUpdateConfirmation> getEmployerUpdateConfirmations() {
+		return employerUpdateConfirmations;
 	}
 
-	public void setEmployerUpdateConfirmation(EmployerUpdateConfirmation employerUpdateConfirmation) {
-		this.employerUpdateConfirmation = employerUpdateConfirmation;
+	public void setEmployerUpdateConfirmations(List<EmployerUpdateConfirmation> employerUpdateConfirmations) {
+		this.employerUpdateConfirmations = employerUpdateConfirmations;
 	}
+
+	
 
 	
 }

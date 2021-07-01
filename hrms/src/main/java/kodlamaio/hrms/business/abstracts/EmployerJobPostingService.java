@@ -21,4 +21,6 @@ public interface EmployerJobPostingService {
 	
 	DataResult<List<EmployerJobPosting>> getByReleaseDateAndIsActiveSorted();
 
+	DataResult<List<EmployerJobPosting>> getByFilter(Integer cityId,Integer jobPositionId,Integer typeOfWorkId,Integer timeOfWorkId);
+
 }

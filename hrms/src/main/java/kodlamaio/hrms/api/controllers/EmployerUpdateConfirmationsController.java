@@ -12,10 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import kodlamaio.hrms.business.abstracts.EmployerUpdateConfirmationService;
-import kodlamaio.hrms.business.abstracts.FavoriteJobPostingOfJobSeekerService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
-import kodlamaio.hrms.entities.concretes.Employer;
 import kodlamaio.hrms.entities.concretes.EmployerUpdateConfirmation;
 
 @RestController
@@ -45,5 +43,12 @@ public class EmployerUpdateConfirmationsController {
 	public Result updateFailed(@RequestParam int id) {
 		return this.employerUpdateConfirmationService.updateFailed(id);
 	}
-	
+	@GetMapping("/getbyisactive")
+	public DataResult<List<EmployerUpdateConfirmation>> getByIsActive(){
+		return this.employerUpdateConfirmationService.getByIsActive();
+	}
+	@GetMapping("/getbyid")
+	public DataResult<EmployerUpdateConfirmation> getById(int id){
+		return this.employerUpdateConfirmationService.getById(id);
+	}
 }

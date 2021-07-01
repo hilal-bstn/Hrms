@@ -66,4 +66,10 @@ public class EmployerJobPostingsController {
 	{
 		return this.employerJobPostingService.getByEmployerIdAndIsActive(employerId);
 	}
+	@GetMapping("/getbyfiter")
+	public DataResult<List<EmployerJobPosting>> getByFilter(@RequestParam(required=false) Integer cityId,@RequestParam(required=false) Integer jobPositionId,
+			@RequestParam(required=false) Integer typeOfWorkId,@RequestParam(required=false) Integer timeOfWorkId)
+	{
+		return this.employerJobPostingService.getByFilter( cityId, jobPositionId, typeOfWorkId, timeOfWorkId);
+	}
 }

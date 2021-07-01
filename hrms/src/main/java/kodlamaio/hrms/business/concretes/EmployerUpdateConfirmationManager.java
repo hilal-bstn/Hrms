@@ -64,5 +64,9 @@ public class EmployerUpdateConfirmationManager implements EmployerUpdateConfirma
 		this.employerUpdateConfirmationDao.save(employerUpdateConfirmation);
 		return new SuccessResult("Güncelleme izni verilmedi.");
 	}
+	@Override
+	public DataResult<List<EmployerUpdateConfirmation>> getByIsActive() {
+		return new SuccessDataResult<List<EmployerUpdateConfirmation>>(this.employerUpdateConfirmationDao.getByIsActive(true));
+	}
 
 }

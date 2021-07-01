@@ -6,7 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,7 +17,7 @@ public class EmployerUpdateConfirmation {
 	@Column(name="employer_id")
 	private int id;
     //onay verildikten sonra silinir.Güncelleme onay beklerken yeni güncelleme yapılamaz.
-	@OneToOne()
+	@ManyToOne()
 	@JoinColumn(name="company_id")
 	private Company company;
 	

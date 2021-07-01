@@ -84,6 +84,11 @@ public class EmployerJobPostingManager implements EmployerJobPostingService  {
 //Onay bekleyen ilanrın listesi=>  EmployerJobPosting=>isActive=false and JobPostingConfirmation=>hrmsConfirmation=false
 //Yayından kaldırılan ilanların listesi=> EmployerJobPosting=>isActive=false and JobPostingConfirmation=>hrmsConfirmation=true
 //Hrms personeli tarafından onaylanmayan ilanların listesi=> EmployerJobPosting=>isActive=false and JobPostingConfirmation=>hrmsConfirmation=null(delete)(?)
+
+	@Override
+	public DataResult<List<EmployerJobPosting>> getByFilter(Integer cityId,Integer jobPositionId,Integer typeOfWorkId,Integer timeOfWorkId) {
+		return new SuccessDataResult<List<EmployerJobPosting>>(this.employerJobPostingDao.getByFilter(  cityId, jobPositionId,typeOfWorkId, timeOfWorkId));
+	}
 	
 
 
