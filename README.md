@@ -1,4 +1,4 @@
-# HRMS (Java+React)
+# Human Resource Management System (Java+React)
 <td>&#128205;<t> <code>Eclipse</code><br>
 <td>&#128205;<t> <code>Spring Boot(Spring Initializr)</code><br>
 <td>&#128205;<t> <code>PostgreSql</code><br>
